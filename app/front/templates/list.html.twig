@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<table>
+	<tr>
+        <td>title</td>
+		<td>author</td>
+		<td>type</td>
+		<td>note</td>
+		<td>finished date</td>
+		<td></td>
+	</tr>
+
+	{% include 'new.html.twig' with types %}
+
+    {% for book in books %}
+    <tr>
+        <td>
+            <strong>{{ book.title }}</strong>
+        </td>
+
+        <td>
+            <strong>{{ book.author }}</strong></td>
+        </td>
+
+        <td>{{ book.type }}</td>
+        <td>{{ notes[book.note] }}</td>
+        <td>{{ book.date }}</td>
+        <td></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock%}
+
+

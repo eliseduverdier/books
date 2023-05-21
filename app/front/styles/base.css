@@ -1,0 +1,40 @@
+html {
+    font: normal 14px monospace;
+    color:#045a2f;
+    background-color: #eee;
+}
+body {
+    max-width : 600px;
+    margin: 10px auto;
+}
+
+/*
+ *  LIST
+ */
+table {
+    border-collapse: collapse;
+}
+tr {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+td {
+    padding: 10px 20px;
+}
+
+/*
+ * NEW
+ */
+input, button, select {
+    border: 1px solid darkgreen;
+    padding: 5px;
+    font: normal 14px monospace;
+}
+input, select {
+    background: none;
+    color: darkgreen;
+}
+button{
+    background: darkgreen;
+    color:#eee;
+}

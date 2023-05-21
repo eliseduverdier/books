@@ -1,0 +1,30 @@
+<tr>
+    <form method="POST">
+        <td>
+            <input type="text" name="title" placeholder="title"/>
+        </td>
+        <td>
+            <input type="text" name="author" placeholder="author"/>
+        </td>
+        <td>
+            <select name="type">
+                {% for type in types %}
+                <option value="{{type}}"> {{ type }} </option>
+                {% endfor %}
+            </select>
+        </td>
+        <td>
+            <select name="note">
+                {% for key, type in notes %}
+                <option value="{{key}}"> {{ type }} </option>
+                {% endfor %}
+            </select>
+            </td>
+        <td>
+            <input type="date" name="date" placeholder="date"/>
+        </td>
+        <td>
+            <button type="submit">OK</button>
+        </td>
+    </form>
+</tr>
