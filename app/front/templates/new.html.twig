@@ -8,6 +8,7 @@
         </td>
         <td>
             <select name="type">
+                <option>—Type—</option>
                 {% for type in types %}
                 <option value="{{type}}"> {{ type }} </option>
                 {% endfor %}
@@ -15,6 +16,7 @@
         </td>
         <td>
             <select name="note">
+                <option>—Note—</option>
                 {% for key, type in notes %}
                 <option value="{{key}}"> {{ type }} </option>
                 {% endfor %}

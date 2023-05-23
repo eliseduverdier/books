@@ -1,10 +1,15 @@
+:root{
+    --bg-color: #fff;
+    --fg-color: #04c062;
+}
+
 html {
-    font: normal 14px monospace;
-    color:#045a2f;
-    background-color: #eee;
+    font: normal 13px monospace;
+    color: var(--fg-color);
+    background-color: var(--bg-color);
 }
 body {
-    margin: 10px 30px;
+    margin: 10px;
 }
 
 /*
@@ -12,28 +17,29 @@ body {
  */
 table {
     border-collapse: collapse;
+    width: 100%;
 }
 tr {
     padding: 5px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
 }
 td {
-    padding: 10px 20px;
+    padding: 10px;
 }
 
 /*
  * NEW
  */
 input, button, select {
-    border: 1px solid darkgreen;
+    border: 1px solid var(--fg-color);
     padding: 5px;
     font: normal 14px monospace;
 }
 input, select {
     background: none;
-    color: darkgreen;
+    color: var(--fg-color);
 }
 button{
-    background: darkgreen;
-    color:#eee;
+    background: var(--fg-color);
+    color:var(--bg-color);
 }

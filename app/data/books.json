@@ -1,1 +1,296 @@
-[{"title":"Thinking, fast and slow","author":"Daniel Kahneman","type":"essay","note":"","date":"2022-05-07"},{"title":"Autobiography of Bertrand Russel","author":"Bertrand Russel","type":"biography","note":"","date":"2022-07-23"},{"title":"Le Sentiment m\u00eame de soi : corps, \u00e9motions, conscience","author":"Antonio Damasio","type":"essay","note":"","date":"2022-06-11"},{"title":"Les pieds bleus","author":"Claude Ponti","type":"novel","note":"","date":"2022-08-16"},{"title":"Rien ne s'oppose \u00e0 la nuit","author":"Delphine de Vigan","type":"novel","note":"","date":"2022-08-26"},{"title":"Formules #2 (Revue des litt\u00e9ratures \u00e0 contraintes)","author":"many","type":"essay","note":"","date":"2022-08-20"},{"title":"Enqu\u00eates","author":"JL Borges","type":"novel","note":"","date":"2022-10-06"},{"title":"Yoga","author":"Emmanuel Carr\u00e8re","type":"novel","note":"","date":"2022-04-24"},{"title":"Un Roman Russe","author":"Emmanuel Carr\u00e8re","type":"novel","note":"","date":"2022-07-01"},{"title":"Album Perec Pleiades","author":"Claude Burgelin","type":"biography","note":"","date":"2022-09-07"},{"title":"Essais","author":"Montaigne","type":"biography","note":"","date":"2022-08-15"},{"title":"La d\u00e9mocratie aux marges","author":"David Graeber","type":"essay","note":"","date":"2022-04-30"},{"title":"Le dessin & les mots","author":"Bunpei Yorifuji","type":"essay","note":"","date":"2022-02-01"},{"title":"La Naissance d'un P\u00e8re","author":"Alexandre Lacroix","type":"novel","note":"","date":"2020-12-01"},{"title":"L'Anomalie","author":"Herv\u00e9 Le Tellier","type":"novel","note":"","date":"2020-10-24"},{"title":"R\u00e9inventer l'amour","author":"Mona Chollet","type":"essay","note":"","date":"2022-03-19"},{"title":"Jours sans faim","author":"Delphine de Vigan","type":"novel","note":"","date":"2022-08-27"},{"title":"Les Heures Souterraines","author":"Delphine de Vigan","type":"novel","note":"","date":"2022-08-31"},{"title":"Les Loyaut\u00e9s","author":"Delphine de Vigan","type":"novel","note":"","date":"2022-09-11"},{"title":"Deep Focus","author":"Cal Newport","type":"novel","note":"","date":"2022-11-01"},{"title":"Album Raymon Queneau","author":"Anne-Isabelle Queneau","type":"novel","note":"","date":"2022-10-24"},{"title":"Vocabulaire de la psychanalyse","author":"J. Laplanche, J.B. Pontalis","type":"novel","note":"","date":"2023-03-01"},{"title":"Philosophes Tao\u00efstes"},{"title":"\u00c0 Mains Nues","author":"Amandine Dh\u00e9e","type":"novel","note":"","date":"2023-01-02"},{"title":"La Symfony Pastorale","author":"Andr\u00e9 Gide","type":"novel","note":"","date":"2023-01-15"},{"title":"DIalectique du Moi et de l'inconscient","author":"C.G. Jung","type":"novel","note":"","date":"2023-02-04"},{"title":"Les Nourritures Terrestres","author":"Andr\u00e9 Gide","type":"novel","note":"","date":"2023-02-19"},{"title":"le Ch\u0153ur des Femmes","author":"Martin Winkler","type":"novel","note":"","date":"2023-02-20"},{"title":"\u00c9mile ou de l'\u00e9ducation","author":"Rousseau","type":"novel","note":"","date":"2023-04-22"},{"title":"Pas Pleurer","author":"Lydie Salvayre","type":"novel","note":"","date":"2023-05-03"},{"title":"\u00c9tat Limite","author":"Pierre Assouline","type":"novel","note":"","date":"2023-05-02"},{"title":"Je t'aime \u00e0 la philo","author":"Olivia Gazal\u00e9","type":"novel","note":"","date":"2023-04-07"},{"title":"Dedalus","author":"James Joyce","type":"novel","note":"","date":"2023-05-11"},{"title":"Les Chemins de Katmandou","author":"Barjavel","type":"novel","note":"","date":"2023-05-10"},{"title":"Une Vie (autobiographie)","author":"Simone Veil","type":"novel","note":"","date":"2023-05-14"},{"title":"Tout est language","author":"Fran\u00e7oise Dolto","type":"novel","note":"","date":"2023-05-13"},{"title":"Les Petits","author":"Marion Fayolle","type":"novel","note":"","date":"2022-11-09"},{"title":"Quand les parents se s\u00e9parent","author":"Fran\u00e7oise Dolto","type":"essay","note":"2","date":"2023-05-21"}]
+[
+    {
+        "title": "Thinking, fast and slow",
+        "author": "Daniel Kahneman",
+        "type": "essay",
+        "note": "5",
+        "date": "2022-04-02"
+    },
+    {
+        "title": "Autobiography of Bertrand Russel",
+        "author": "Bertrand Russel",
+        "type": "biography",
+        "note": "6",
+        "date": "2022-07-23"
+    },
+    {
+        "title": "Le Sentiment m\u00eame de soi : corps, émotions, conscience",
+        "author": "Antonio Damasio",
+        "type": "essay",
+        "note": "2",
+        "date": "2022-06-01"
+    },
+    {
+        "title": "Les pieds bleus",
+        "author": "Claude Ponti",
+        "type": "novel",
+        "note": "5",
+        "date": "2022-08-16"
+    },
+    {
+        "title": "Rien ne s’oppose \u00e0 la nuit",
+        "author": "Delphine de Vigan",
+        "type": "novel",
+        "note": "6",
+        "date": "2022-08-26"
+    },
+    {
+        "title": "Formules #2 (Revue des littératures \u00e0 contraintes)",
+        "author": "many",
+        "type": "essay",
+        "note": "5",
+        "date": "2022-08-20"
+    },
+    {
+        "title": "Enqu\u00eates",
+        "author": "JL Borges",
+        "type": "novel",
+        "note": "3",
+        "date": "2022-10-06"
+    },
+    {
+        "title": "Yoga",
+        "author": "Emmanuel Carr\u00e8re",
+        "type": "novel",
+        "note": "3",
+        "date": "2022-04-24"
+    },
+    {
+        "title": "Le Royaume",
+        "author": "Emmanuel Carr\u00e8re",
+        "type": "novel",
+        "note": "5",
+        "date": "2023-04-22"
+    },
+    {
+        "title": "Un Roman Russe",
+        "author": "Emmanuel Carr\u00e8re",
+        "type": "novel",
+        "note": "0",
+        "date": "2022-07-01"
+    },
+    {
+        "title": "Album Perec Pleiades",
+        "author": "Claude Burgelin",
+        "type": "biography",
+        "note": "5",
+        "date": "2022-09-07"
+    },
+    {
+        "title": "Essais",
+        "author": "Montaigne",
+        "type": "biography",
+        "note": "5",
+        "date": "2022-08-15"
+    },
+    {
+        "title": "Les Furtifs",
+        "author": "Alain Damasion",
+        "type": "novel",
+        "note": "6",
+        "date": "2022-08-15"
+    },
+    {
+        "title": "La démocratie aux marges",
+        "author": "David Graeber",
+        "type": "essay",
+        "note": "2",
+        "date": "2022-04-30"
+    },
+    {
+        "title": "Le dessin & les mots",
+        "author": "Bunpei Yorifuji",
+        "type": "essay",
+        "note": "3",
+        "date": "2022-02-01"
+    },
+    {
+        "title": "La Naissance d’un P\u00e8re",
+        "author": "Alexandre Lacroix",
+        "type": "novel",
+        "note": "6",
+        "date": "2020-12-01"
+    },
+    {
+        "title": "L’Anomalie",
+        "author": "Hervé Le Tellier",
+        "type": "novel",
+        "note": "6",
+        "date": "2020-10-24"
+    },
+    {
+        "title": "Réinventer l’amour",
+        "author": "Mona Chollet",
+        "type": "essay",
+        "note": "5",
+        "date": "2022-03-19"
+    },
+    {
+        "title": "Jours sans faim",
+        "author": "Delphine de Vigan",
+        "type": "novel",
+        "note": "5",
+        "date": "2022-08-27"
+    },
+    {
+        "title": "Les Heures Souterraines",
+        "author": "Delphine de Vigan",
+        "type": "novel",
+        "note": "5",
+        "date": "2022-08-31"
+    },
+    {
+        "title": "Les Loyautés",
+        "author": "Delphine de Vigan",
+        "type": "novel",
+        "note": "5",
+        "date": "2022-09-11"
+    },
+    {
+        "title": "Album Raymon Queneau",
+        "author": "Anne-Isabelle Queneau",
+        "type": "biography",
+        "note": "5",
+        "date": "2022-10-24"
+    },
+    {
+        "title": "Dialectique du Moi et de l’inconscient",
+        "author": "C.G. Jung",
+        "type": "essay",
+        "note": "5",
+        "date": "2023-02-04"
+    },
+    {
+        "title": "Introduction à la psychanalyse de Freud",
+        "author": "Michel Dethy",
+        "type": "essay",
+        "note": "3",
+        "date": "2022-11-27"
+    },
+    {
+        "title": "Vocabulaire de la psychanalyse",
+        "author": "J. Laplanche, J.B. Pontalis",
+        "type": "essay",
+        "note": "5",
+        "date": "2023-03-01"
+    },
+    {
+        "title": "Quand les parents se séparent",
+        "author": "Fran\u00e7oise Dolto",
+        "type": "essay",
+        "note": "1",
+        "date": "2023-05-21"
+    },
+    {
+        "title": "\u00c0 Mains Nues",
+        "author": "Amandine Dhée",
+        "type": "novel",
+        "note": "3",
+        "date": "2023-01-02"
+    },
+    {
+        "title": "La Symfony Pastorale",
+        "author": "André Gide",
+        "type": "novel",
+        "note": "3",
+        "date": "2023-01-15"
+    },
+    {
+        "title": "Les Nourritures Terrestres",
+        "author": "André Gide",
+        "type": "novel",
+        "note": "2",
+        "date": "2023-02-19"
+    },
+    {
+        "title": "Les Caves du Vatican",
+        "author": "André Gide",
+        "type": "novel",
+        "note": "5",
+        "date": "2022-12-19"
+    },
+    {
+        "title": "Le Ch\u0153ur des Femmes",
+        "author": "Martin Winkler",
+        "type": "novel",
+        "note": "6",
+        "date": "2023-02-20"
+    },
+    {
+        "title": "\u00c9mile ou de l’éducation",
+        "author": "Rousseau",
+        "type": "essay",
+        "note": "5",
+        "date": "2023-04-22"
+    },
+    {
+        "title": "Pas Pleurer",
+        "author": "Lydie Salvayre",
+        "type": "novel",
+        "note": "5",
+        "date": "2023-05-03"
+    },
+    {
+        "title": "\u00c9tat Limite",
+        "author": "Pierre Assouline",
+        "type": "novel",
+        "note": "3",
+        "date": "2023-05-02"
+    },
+    {
+        "title": "Je t’aime \u00e0 la philo",
+        "author": "Olivia Gazalé",
+        "type": "essay",
+        "note": "6",
+        "date": "2023-04-07"
+    },
+    {
+        "title": "Dedalus",
+        "author": "James Joyce",
+        "type": "novel",
+        "note": "5",
+        "date": "2023-05-11"
+    },
+    {
+        "title": "Les Chemins de Katmandou",
+        "author": "Barjavel",
+        "type": "novel",
+        "note": "3",
+        "date": "2023-05-10"
+    },
+    {
+        "title": "Une Vie (autobiographie)",
+        "author": "Simone Veil",
+        "type": "biography",
+        "note": "2",
+        "date": "2023-05-14"
+    },
+    {
+        "title": "Tout est language",
+        "author": "Fran\u00e7oise Dolto",
+        "type": "essay",
+        "note": "3",
+        "date": "2023-05-13"
+    },
+    {
+        "title": "Les Petits",
+        "author": "Marion Fayolle",
+        "type": "art",
+        "note": "4",
+        "date": "2022-11-09"
+    },
+    {
+        "title": "Maisonologue",
+        "author": "Lorraine les Bains",
+        "type": "art",
+        "note": "6",
+        "date": "2022-09-15"
+    },
+    {
+        "title": "Iphigenie",
+        "author": "Racine",
+        "type": "novel",
+        "note": "2",
+        "date": "2023-05-22"
+    }
+]
