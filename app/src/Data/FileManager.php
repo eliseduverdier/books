@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Data;
 
 class FileManager
 {
@@ -9,7 +9,7 @@ class FileManager
         return json_decode(file_get_contents($filePath), true) ?? [];
     }
 
-    public function saveFileAsJson(string $filePath, array $data): bool
+    public function saveFile(string $filePath, array $data): bool
     {
         $fileContent = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 

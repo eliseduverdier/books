@@ -11,26 +11,24 @@
 		<td></td>
 	</tr>
 
-	{% include 'new.html.twig' with types %}
+	{% include 'new.html.twig' %}
 
-    {% for book in books %}
+    {% for slug, book in books %}
     <tr>
         <td>
             <strong>{{ book.title }}</strong>
         </td>
 
         <td>
-            <strong>{{ book.author }}</strong></td>
+            <strong>{{ book.author }}</strong>
         </td>
 
         <td>{{ book.type }}</td>
         <td>{{ notes[book.note] }}</td>
         <td>{{ book.date }}</td>
-        <td></td>
+        <td><a href="edit.php?s={{ slug }}">🖍️</a> </td>
     </tr>
     {% endfor %}
 </table>
 
 {% endblock%}
-
-

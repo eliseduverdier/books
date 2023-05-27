@@ -1,296 +1,303 @@
-[
-    {
+{
+    "daniel_kahneman_thinking_fast_and_slow": {
         "title": "Thinking, fast and slow",
         "author": "Daniel Kahneman",
         "type": "essay",
         "note": "5",
         "date": "2022-04-02"
     },
-    {
+    "bertrand_russel_autobiography_of_bertrand_russel": {
         "title": "Autobiography of Bertrand Russel",
         "author": "Bertrand Russel",
         "type": "biography",
         "note": "6",
         "date": "2022-07-23"
     },
-    {
-        "title": "Le Sentiment m\u00eame de soi : corps, émotions, conscience",
+    "antonio_damasio_le_sentiment_meme_de_soi__corps_emotions_conscience": {
+        "title": "Le Sentiment même de soi : corps, émotions, conscience",
         "author": "Antonio Damasio",
         "type": "essay",
         "note": "2",
         "date": "2022-06-01"
     },
-    {
+    "claude_ponti_les_pieds_bleus": {
         "title": "Les pieds bleus",
         "author": "Claude Ponti",
         "type": "novel",
         "note": "5",
         "date": "2022-08-16"
     },
-    {
-        "title": "Rien ne s’oppose \u00e0 la nuit",
+    "delphine_de_vigan_rien_ne_soppose_a_la_nuit": {
+        "title": "Rien ne s’oppose à la nuit",
         "author": "Delphine de Vigan",
         "type": "novel",
         "note": "6",
         "date": "2022-08-26"
     },
-    {
-        "title": "Formules #2 (Revue des littératures \u00e0 contraintes)",
+    "many_formules_2_revue_des_littratures_a_contraintes": {
+        "title": "Formules #2 (Revue des littératures à contraintes)",
         "author": "many",
         "type": "essay",
         "note": "5",
         "date": "2022-08-20"
     },
-    {
-        "title": "Enqu\u00eates",
+    "jl_borges_enquetes": {
+        "title": "Enquêtes",
         "author": "JL Borges",
         "type": "novel",
         "note": "3",
         "date": "2022-10-06"
     },
-    {
+    "emmanuel_carrere_yoga": {
         "title": "Yoga",
-        "author": "Emmanuel Carr\u00e8re",
+        "author": "Emmanuel Carrère",
         "type": "novel",
         "note": "3",
         "date": "2022-04-24"
     },
-    {
+    "emmanuel_carrere_le_royaume": {
         "title": "Le Royaume",
-        "author": "Emmanuel Carr\u00e8re",
+        "author": "Emmanuel Carrère",
         "type": "novel",
         "note": "5",
         "date": "2023-04-22"
     },
-    {
+    "emmanuel_carrère_un_roman_russe": {
         "title": "Un Roman Russe",
-        "author": "Emmanuel Carr\u00e8re",
+        "author": "Emmanuel Carrère",
         "type": "novel",
         "note": "0",
         "date": "2022-07-01"
     },
-    {
+    "claude_burgelin_album_perec_pleiades": {
         "title": "Album Perec Pleiades",
         "author": "Claude Burgelin",
         "type": "biography",
         "note": "5",
         "date": "2022-09-07"
     },
-    {
+    "montaigne_essais": {
         "title": "Essais",
         "author": "Montaigne",
         "type": "biography",
         "note": "5",
         "date": "2022-08-15"
     },
-    {
+    "alain_damasio_les_furtifs": {
         "title": "Les Furtifs",
-        "author": "Alain Damasion",
+        "author": "Alain Damasio",
         "type": "novel",
         "note": "6",
         "date": "2022-08-15"
     },
-    {
+    "david_graeber_la_democratie_aux_marges": {
         "title": "La démocratie aux marges",
         "author": "David Graeber",
         "type": "essay",
         "note": "2",
         "date": "2022-04-30"
     },
-    {
+    "bunpei_yorifuji_le_dessin__les_mots": {
         "title": "Le dessin & les mots",
         "author": "Bunpei Yorifuji",
         "type": "essay",
         "note": "3",
         "date": "2022-02-01"
     },
-    {
-        "title": "La Naissance d’un P\u00e8re",
+    "alexandre_lacroix_la_naissance_dun_père": {
+        "title": "La Naissance d’un Père",
         "author": "Alexandre Lacroix",
         "type": "novel",
         "note": "6",
         "date": "2020-12-01"
     },
-    {
+    "herve_le_tellier_lanomalie": {
         "title": "L’Anomalie",
         "author": "Hervé Le Tellier",
         "type": "novel",
         "note": "6",
         "date": "2020-10-24"
     },
-    {
+    "mona_chollet_reinventer_lamour": {
         "title": "Réinventer l’amour",
         "author": "Mona Chollet",
         "type": "essay",
         "note": "5",
         "date": "2022-03-19"
     },
-    {
+    "delphine_de_vigan_jours_sans_faim": {
         "title": "Jours sans faim",
         "author": "Delphine de Vigan",
         "type": "novel",
         "note": "5",
         "date": "2022-08-27"
     },
-    {
+    "delphine_de_vigan_les_heures_souterraines": {
         "title": "Les Heures Souterraines",
         "author": "Delphine de Vigan",
         "type": "novel",
         "note": "5",
         "date": "2022-08-31"
     },
-    {
+    "delphine_de_vigan_les_loyautes": {
         "title": "Les Loyautés",
         "author": "Delphine de Vigan",
         "type": "novel",
         "note": "5",
         "date": "2022-09-11"
     },
-    {
+    "anneisabelle_queneau_album_raymon_queneau": {
         "title": "Album Raymon Queneau",
         "author": "Anne-Isabelle Queneau",
         "type": "biography",
         "note": "5",
         "date": "2022-10-24"
     },
-    {
+    "cg_jung_dialectique_du_moi_et_de_linconscient": {
         "title": "Dialectique du Moi et de l’inconscient",
         "author": "C.G. Jung",
         "type": "essay",
         "note": "5",
         "date": "2023-02-04"
     },
-    {
+    "michel_dethy_introduction_a_la_psychanalyse_de_freud": {
         "title": "Introduction à la psychanalyse de Freud",
         "author": "Michel Dethy",
         "type": "essay",
         "note": "3",
         "date": "2022-11-27"
     },
-    {
+    "j_laplanche_jb_pontalis_vocabulaire_de_la_psychanalyse": {
         "title": "Vocabulaire de la psychanalyse",
         "author": "J. Laplanche, J.B. Pontalis",
         "type": "essay",
         "note": "5",
         "date": "2023-03-01"
     },
-    {
-        "title": "Quand les parents se séparent",
-        "author": "Fran\u00e7oise Dolto",
-        "type": "essay",
-        "note": "1",
-        "date": "2023-05-21"
-    },
-    {
-        "title": "\u00c0 Mains Nues",
+    "amandine_dhee_mains_nues": {
+        "title": "À Mains Nues",
         "author": "Amandine Dhée",
         "type": "novel",
         "note": "3",
         "date": "2023-01-02"
     },
-    {
+    "andre_gide_la_symfony_pastorale": {
         "title": "La Symfony Pastorale",
         "author": "André Gide",
         "type": "novel",
         "note": "3",
         "date": "2023-01-15"
     },
-    {
+    "andre_gide_les_nourritures_terrestres": {
         "title": "Les Nourritures Terrestres",
         "author": "André Gide",
         "type": "novel",
         "note": "2",
         "date": "2023-02-19"
     },
-    {
+    "andre_gide_les_caves_du_vatican": {
         "title": "Les Caves du Vatican",
         "author": "André Gide",
         "type": "novel",
         "note": "5",
         "date": "2022-12-19"
     },
-    {
-        "title": "Le Ch\u0153ur des Femmes",
+    "martin_winkler_le_chur_des_femmes": {
+        "title": "Le Chœur des Femmes",
         "author": "Martin Winkler",
         "type": "novel",
         "note": "6",
         "date": "2023-02-20"
     },
-    {
-        "title": "\u00c9mile ou de l’éducation",
+    "rousseau_emile_ou_de_lducation": {
+        "title": "Émile ou de l’éducation",
         "author": "Rousseau",
         "type": "essay",
         "note": "5",
         "date": "2023-04-22"
     },
-    {
+    "lydie_salvayre_pas_pleurer": {
         "title": "Pas Pleurer",
         "author": "Lydie Salvayre",
         "type": "novel",
         "note": "5",
         "date": "2023-05-03"
     },
-    {
-        "title": "\u00c9tat Limite",
+    "pierre_assouline_u00c9tat_limite": {
+        "title": "État Limite",
         "author": "Pierre Assouline",
         "type": "novel",
         "note": "3",
         "date": "2023-05-02"
     },
-    {
-        "title": "Je t’aime \u00e0 la philo",
+    "olivia_gazal_je_taime_a_la_philo": {
+        "title": "Je t’aime à la philo",
         "author": "Olivia Gazalé",
         "type": "essay",
         "note": "6",
         "date": "2023-04-07"
     },
-    {
+    "james_joyce_dedalus": {
         "title": "Dedalus",
         "author": "James Joyce",
         "type": "novel",
         "note": "5",
         "date": "2023-05-11"
     },
-    {
+    "barjavel_les_chemins_de_katmandou": {
         "title": "Les Chemins de Katmandou",
         "author": "Barjavel",
         "type": "novel",
         "note": "3",
         "date": "2023-05-10"
     },
-    {
+    "simone_veil_une_vie_autobiographie": {
         "title": "Une Vie (autobiographie)",
         "author": "Simone Veil",
         "type": "biography",
         "note": "2",
         "date": "2023-05-14"
     },
-    {
+    "francoise_dolto_tout_est_language": {
         "title": "Tout est language",
-        "author": "Fran\u00e7oise Dolto",
+        "author": "Françoise Dolto",
         "type": "essay",
         "note": "3",
         "date": "2023-05-13"
     },
-    {
+    "marion_fayolle_les_petits": {
         "title": "Les Petits",
         "author": "Marion Fayolle",
         "type": "art",
         "note": "4",
         "date": "2022-11-09"
     },
-    {
+    "lorraine_les_bains_maisonologue": {
         "title": "Maisonologue",
         "author": "Lorraine les Bains",
         "type": "art",
         "note": "6",
         "date": "2022-09-15"
     },
-    {
+    "racine_iphigenie": {
         "title": "Iphigenie",
         "author": "Racine",
         "type": "novel",
-        "note": "2",
+        "note": "3",
         "date": "2023-05-22"
+    },
+    "francoise_dolto_quand_les_parents_se_sparent": {
+        "title": "Quand les parents se séparent",
+        "author": "Françoise Dolto",
+        "type": "essay",
+        "note": "1",
+        "date": "2023-05-21"
+    },
+    "catherine_musa_mieux_vivre_avec_un_trouble_borderline": {
+        "title": "Mieux vivre avec un trouble borderline",
+        "author": "Catherine Musa",
+        "type": "essay",
+        "note": "5",
+        "date": "2023-05-27"
     }
-]
+}

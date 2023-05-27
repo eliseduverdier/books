@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<form method="POST" name="edit">
+        <div>
+            <label>
+                <input value="{{ book.title }}" type="text" name="title" placeholder="title"/>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input value="{{ book.author }}" type="text" name="author" placeholder="author"/>
+            </label>
+        </div>
+        <div>
+            <label>
+                <select name="type">
+                    <option>—Type—</option>
+                    {% for type in types %}
+                    <option value="{{type}}" {{ book.type == type ? 'selected' : ''}} autocomplete="off"> {{ type }} </option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>
+                <select name="note">
+                    <option>—Note—</option>
+                    {% for key, type in notes %}
+                    <option value="{{key}}" {{ book.note == key ? 'selected' : ''}} autocomplete="off"> {{ type }} </option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input value="{{ book.date }}" type="date" name="date" placeholder="date"/>
+            </label>
+        </div>
+        <div>
+            <button type="submit">OK</button>
+        </div>
+    </form>
+{% endblock %}

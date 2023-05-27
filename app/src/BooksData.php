@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Data\FileManager;
+
 class BooksData
 {
     public const TYPES =
@@ -29,7 +31,6 @@ class BooksData
 
     public function __construct()
     {
-
         $this->fileManager = new FileManager();
         $this->filePath = __DIR__ . '/../data/books.json';
         $this->booksData = $this->fileManager->readFile($this->filePath);
@@ -44,9 +45,10 @@ class BooksData
         ];
     }
 
-    public function save(array $book)
+    public function save(array $book): void
     {
-        $newData = array_merge($this->booksData, [[
+        $newData = array_merge($this->booksData, [
+            Util::slugify($book) => [
             'title' => $book['title'],
             'author' => $book['author'],
             'type' => $book['type'],
@@ -54,14 +56,42 @@ class BooksData
             'date' => $book['date'],
         ]]);
 
-        return $this->fileManager->saveFileAsJson($this->filePath, $newData);
+        $this->fileManager->saveFile($this->filePath, $newData);
+    }
+
+    public function edit(array $newBook, string $slug): array
+    {
+        if (array_key_exists($slug, $this->booksData)) {
+            unset($this->booksData[$slug]);
+        } else {
+            throw new \Exception('Book not found');
+        }
+
+        $newData = array_merge($this->booksData, [
+            Util::slugify($newBook) => [
+            'title' => $newBook['title'],
+            'author' => $newBook['author'],
+            'type' => $newBook['type'],
+            'note' => $newBook['note'],
+            'date' => $newBook['date'],
+        ]]);
+
+        $this->fileManager->saveFile($this->filePath, $newData);
+
+        return $newData;
+    }
+
+    public function delete(array $book): void
+    {
+        unset($this->booksData[Util::slugify($book)]);
+
+        $this->fileManager->saveFile($this->filePath, $this->booksData);
     }
 
     protected function parseBooks(): array
     {
         $json = $this->fileManager->readFile($this->filePath);
-
-        usort($json, fn ($a, $b) => ($a['date'] > $b['date']) ? -1 : 1);
+        uasort($json, fn ($a, $b) => ($a['date'] > $b['date']) ? -1 : 1);
 
         return $json;
     }

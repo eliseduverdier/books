@@ -1,29 +1,39 @@
 <tr>
     <form method="POST">
         <td>
-            <input type="text" name="title" placeholder="title"/>
+            <label>
+                <input type="text" name="title" placeholder="title"/>
+            </label>
         </td>
         <td>
-            <input type="text" name="author" placeholder="author"/>
+            <label>
+                <input type="text" name="author" placeholder="author"/>
+            </label>
         </td>
         <td>
-            <select name="type">
-                <option>—Type—</option>
-                {% for type in types %}
-                <option value="{{type}}"> {{ type }} </option>
-                {% endfor %}
-            </select>
+            <label>
+                <select name="type">
+                    <option>—Type—</option>
+                    {% for type in types %}
+                    <option value="{{type}}"> {{ type }} </option>
+                    {% endfor %}
+                </select>
+            </label>
         </td>
         <td>
-            <select name="note">
-                <option>—Note—</option>
-                {% for key, type in notes %}
-                <option value="{{key}}"> {{ type }} </option>
-                {% endfor %}
-            </select>
-            </td>
+            <label>
+                <select name="note">
+                    <option>—Note—</option>
+                    {% for key, type in notes %}
+                    <option value="{{key}}"> {{ type }} </option>
+                    {% endfor %}
+                </select>
+            </label>
+        </td>
         <td>
-            <input type="date" name="date" placeholder="date"/>
+            <label>
+                <input type="date" name="date" placeholder="date"/>
+            </label>
         </td>
         <td>
             <button type="submit">OK</button>

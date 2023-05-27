@@ -6,7 +6,5 @@ require dirname(__DIR__) . '/books/app/vendor/autoload.php';
 require dirname(__DIR__) . '/books/app/src/BookApp.php';
 
 if ($_POST) {
-    (new BookApp())->saveNew($_POST);
+    (new BookApp())->delete($_POST);
 }
-
-(new BookApp())->display();
