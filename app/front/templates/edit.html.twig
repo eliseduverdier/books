@@ -1,15 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% block nav %}
+    <a href="..">&lt;&lt; back </a>
+{% endblock %}
+
+{% block title %}📖 {{ book.title }}{% endblock %}
+
 {% block body %}
-<form method="POST" name="edit">
+    <form method="POST" name="edit" id="edit">
         <div>
             <label>
-                <input value="{{ book.title }}" type="text" name="title" placeholder="title"/>
+                <input value="{{ book.title }}" type="text" name="title" placeholder="title" autocomplete="off"/>
             </label>
         </div>
         <div>
             <label>
-                <input value="{{ book.author }}" type="text" name="author" placeholder="author"/>
+                <input value="{{ book.author }}" type="text" name="author" placeholder="author" autocomplete="off"/>
             </label>
         </div>
         <div>
@@ -17,7 +23,7 @@
                 <select name="type">
                     <option>—Type—</option>
                     {% for type in types %}
-                    <option value="{{type}}" {{ book.type == type ? 'selected' : ''}} autocomplete="off"> {{ type }} </option>
+                        <option value="{{ type }}" {{ book.type == type ? 'selected' : '' }} autocomplete="off"> {{ type }} </option>
                     {% endfor %}
                 </select>
             </label>
@@ -25,20 +31,28 @@
         <div>
             <label>
                 <select name="note">
-                    <option>—Note—</option>
-                    {% for key, type in notes %}
-                    <option value="{{key}}" {{ book.note == key ? 'selected' : ''}} autocomplete="off"> {{ type }} </option>
+                    <option>{{notes[book.note_id]}}</option>
+                    {% for key, note in notes %}
+                        <option value="{{ key }}" {{ book.note_id == key ? 'selected' : '' }} autocomplete="off">{{ key }} - {{ note }} </option>
                     {% endfor %}
                 </select>
             </label>
         </div>
         <div>
             <label>
-                <input value="{{ book.date }}" type="date" name="date" placeholder="date"/>
+                <input value="{{ book.finished_at|date('Y-m-d')  }}" type="date" name="date" placeholder="date"/>
+            </label>
+        </div>
+        <div>
+            <label>
+                <textarea name="summary" cols="30" rows="20">{{ book.summary }}</textarea>
             </label>
         </div>
         <div>
             <button type="submit">OK</button>
+        </div>
+        <div>
+            <button class="delete"><a href="delete.php?s={{ slug }}">Delete</a></button>
         </div>
     </form>
 {% endblock %}

@@ -1,13 +1,19 @@
-:root{
+:root {
     --bg-color: #fff;
     --fg-color: #04c062;
+    --link-color: black;
 }
-
+[data-theme="dark"] {
+    --bg-color: #222;
+    --fg-color: #A9F6CF;
+    --link-color: white;
+}
 html {
     font: normal 13px monospace;
     color: var(--fg-color);
     background-color: var(--bg-color);
 }
+
 body {
     margin: 10px;
 }
@@ -19,27 +25,62 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
+
 tr {
     padding: 5px;
     border-bottom: 1px solid #eee;
 }
+
 td {
     padding: 10px;
 }
 
 /*
- * NEW
+ * NEW / EDIT
  */
-input, button, select {
+input, button, select, textarea {
     border: 1px solid var(--fg-color);
     padding: 5px;
     font: normal 14px monospace;
 }
-input, select {
+
+#edit input, #edit select, textarea {
+    max-width: 600px;
+    width: 90%;
+    margin: 5px 0;
+}
+
+input, select, textarea {
     background: none;
     color: var(--fg-color);
 }
-button{
+input:focus, select:focus, textarea:focus {
+    border-bottom: 3px solid var(--fg-color);
+    outline: none;
+}
+
+button {
     background: var(--fg-color);
-    color:var(--bg-color);
+    color: var(--bg-color);
+}
+
+button.delete {
+    background: firebrick;
+    border: 1px solid firebrick;
+}
+
+a {
+    color: var(--link-color);
+    border-bottom: 3px solid var(--fg-color);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--fg-color);
+}
+a.edit {
+    border-bottom: none;
+}
+button.delete a {
+    border-bottom: none;
+    color: white;
 }

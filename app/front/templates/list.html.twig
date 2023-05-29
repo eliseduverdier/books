@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}List of read books 📚{% endblock %}
+
 {% block body %}
 <table>
 	<tr>
@@ -13,7 +15,7 @@
 
 	{% include 'new.html.twig' %}
 
-    {% for slug, book in books %}
+    {% for book in books %}
     <tr>
         <td>
             <strong>{{ book.title }}</strong>
@@ -24,9 +26,9 @@
         </td>
 
         <td>{{ book.type }}</td>
-        <td>{{ notes[book.note] }}</td>
-        <td>{{ book.date }}</td>
-        <td><a href="edit.php?s={{ slug }}">🖍️</a> </td>
+        <td>{{ book.note }}</td>
+        <td>{{ book.finished_at|date('Y⋅m⋅d') }}</td>
+        <td><a href="edit.php?s={{ book.slug }}" class="edit">🖍️</a> </td>
     </tr>
     {% endfor %}
 </table>

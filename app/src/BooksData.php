@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Data\FileManager;
+use App\Data\Database;
 
 class BooksData
 {
@@ -25,74 +26,43 @@ class BooksData
         '0' => '😞',
     ];
 
-    protected FileManager $fileManager;
-    protected string $filePath;
+    protected Database $dataManager;
     protected array $booksData;
+    protected array $notes;
+    protected array $types;
 
     public function __construct()
     {
-        $this->fileManager = new FileManager();
-        $this->filePath = __DIR__ . '/../data/books.json';
-        $this->booksData = $this->fileManager->readFile($this->filePath);
+        $this->dataManager = new Database();
+        $this->booksData = $this->dataManager->getAll();
+        $this->notes = $this->dataManager->getNotes();
+        $this->types = $this->dataManager->getTypes();
     }
 
-    public function getData(): array
+    public function getBooks(): array
     {
-        return [
-            'books' => $this->parseBooks(),
-            'types' => self::TYPES,
-            'notes' => self::NOTES,
-        ];
+        return $this->dataManager->getAll();
     }
 
-    public function save(array $book): void
+    public function getBook(string $slug): array
     {
-        $newData = array_merge($this->booksData, [
-            Util::slugify($book) => [
-            'title' => $book['title'],
-            'author' => $book['author'],
-            'type' => $book['type'],
-            'note' => $book['note'],
-            'date' => $book['date'],
-        ]]);
-
-        $this->fileManager->saveFile($this->filePath, $newData);
+        return $this->dataManager->getOne($slug);
     }
 
-    public function edit(array $newBook, string $slug): array
+    public function save(array $newBook): void
     {
-        if (array_key_exists($slug, $this->booksData)) {
-            unset($this->booksData[$slug]);
-        } else {
-            throw new \Exception('Book not found');
-        }
-
-        $newData = array_merge($this->booksData, [
-            Util::slugify($newBook) => [
-            'title' => $newBook['title'],
-            'author' => $newBook['author'],
-            'type' => $newBook['type'],
-            'note' => $newBook['note'],
-            'date' => $newBook['date'],
-        ]]);
-
-        $this->fileManager->saveFile($this->filePath, $newData);
-
-        return $newData;
+        $this->dataManager->save($newBook);
     }
 
-    public function delete(array $book): void
+    public function edit(string $slug, array $newBook): array
     {
-        unset($this->booksData[Util::slugify($book)]);
+        $this->dataManager->edit($slug, $newBook);
 
-        $this->fileManager->saveFile($this->filePath, $this->booksData);
+        return $newBook;
     }
 
-    protected function parseBooks(): array
+    public function delete(string $slug): void
     {
-        $json = $this->fileManager->readFile($this->filePath);
-        uasort($json, fn ($a, $b) => ($a['date'] > $b['date']) ? -1 : 1);
-
-        return $json;
+        $this->dataManager->delete($slug);
     }
 }

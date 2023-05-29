@@ -8,63 +8,70 @@ use Twig\Loader\FilesystemLoader;
 class BookApp
 {
     protected Environment $twig;
+    private BooksData $booksData;
 
     public function __construct()
     {
         $this->twig = (new Environment(
             new FilesystemLoader(__DIR__ . '/../front/templates/'),
         ));
+        $this->booksData = new \App\BooksData();
     }
 
-    public function display(): void
+    public function list(): void
     {
         $this->twig->display(
             'list.html.twig',
-            (new BooksData())->getData()
+            [
+                'books' => $this->booksData->getBooks(),
+                'types' => BooksData::TYPES,
+                'notes' => BooksData::NOTES,
+            ]
         );
     }
 
     public function displayEdit(): void
     {
-        $booksData = new BooksData();
-
         $this->twig->display(
             'edit.html.twig',
             [
-                'book' => $booksData->getData()['books'][$_GET['s']],
-                'types' => $booksData->getData()['types'],
-                'notes' => $booksData->getData()['notes'],
+                'slug' => $_GET['s'],
+                'book' => $this->booksData->getBook($_GET['s']),
+                'types' => BooksData::TYPES,
+                'notes' => BooksData::NOTES,
             ]
         );
     }
 
     public function saveNew(array $data): void
     {
-        (new BooksData())->save($data);
+        $this->booksData->save($data);
     }
 
     public function edit(array $data, string $slug): void
     {
-        new BooksData();
         try {
-            (new BooksData())->edit($data, $slug);
-            header('Location: ../index.php');
+            $this->booksData->edit($slug, $data);
+            header("HTTP/2 301 Moved Permanently");
+            header('Location: index.php');
         } catch (\Exception $e) {
             $this->twig->display(
                 'error.html.twig',
-                ['error' => $e->getMessage()]
+                ['error' => $e]
             );
         }
     }
 
-    public function delete(array $data): void
+    public function delete(string $slug): void
     {
         try {
-            (new BooksData())->delete($data);
+            $this->booksData->delete($slug);
+            header("HTTP/2 301 Moved Permanently");
+            header('Location: index.php');
         } catch (\Exception $e) {
             $this->twig->display(
                 'error.html.twig',
-                ['error' => $e->getMessage()]
+                ['error' => $e]
             );
         }
     }

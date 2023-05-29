@@ -2,18 +2,33 @@
 
 namespace App\Data;
 
-class FileManager
+class FileManager implements DataInterface
 {
-    public function readFile(string $filePath): array
+    protected string $filePath;
+
+    public function __construct()
     {
-        return json_decode(file_get_contents($filePath), true) ?? [];
+        $this->filePath = __DIR__ . '/../data/books.json';
     }
 
-    public function saveFile(string $filePath, array $data): bool
+    public function getAll(): array
+    {
+        $json = json_decode(file_get_contents($this->filePath), true) ?? [];
+        uasort($json, fn ($a, $b) => ($a['date'] > $b['date']) ? -1 : 1);
+
+        return $json;
+    }
+
+    public function getOne(string $slug): array
+    {
+        return json_decode(file_get_contents($this->filePath), true)[$slug] ?? [];
+    }
+
+    public function save(array $data): bool
     {
         $fileContent = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
-        $fp = fopen($filePath, 'w');
+        $fp = fopen($this->filePath, 'w');
 
         return (bool) fwrite($fp, $fileContent);
     }
