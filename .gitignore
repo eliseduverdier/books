@@ -1,4 +1,5 @@
 app/vendor/
 app/data/books_saved*
-app/src/Data/.env.php
+app/.env.php
 deploy.sh
+.env.php

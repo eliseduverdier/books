@@ -11,10 +11,10 @@ class MysqlDriver
     {
         $this->tableName = $tableName;
         $_SERVER['SERVER_NAME'] === 'localhost'
-            ? require __DIR__ . '/.env.dist.php'
-            : require __DIR__ . '/.env.php';
+            ? require __DIR__ . '/../../.env.dist.php'
+            : require __DIR__ . '/../../.env.php';
 
-        $this->connection = mysqli_connect($HOST, $USER, $PASSWORD, $DATABASE);
+        $this->connection = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
         if (!$this->connection) {
             throw new \Exception('[DATABASE] Connection failed: ' . mysqli_connect_error());
         }

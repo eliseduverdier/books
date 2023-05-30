@@ -1,5 +1,5 @@
 # books 📚
 
-Simple app to store list of read books
+(really) simple app to store list of read books
 
-php + twig + json
+php + twig + mysql

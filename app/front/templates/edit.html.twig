@@ -7,7 +7,7 @@
 {% block title %}📖 {{ book.title }}{% endblock %}
 
 {% block body %}
-    <form method="POST" name="edit" id="edit">
+    <form method="POST" name="{{ book.slug }}/edit" id="edit">
         <div>
             <label>
                 <input value="{{ book.title }}" type="text" name="title" placeholder="title" autocomplete="off"/>
@@ -52,7 +52,7 @@
             <button type="submit">OK</button>
         </div>
         <div>
-            <button class="delete"><a href="delete.php?s={{ slug }}">Delete</a></button>
+            <button class="delete"><a href="{{ book.slug }}/delete">Delete</a></button>
         </div>
     </form>
 {% endblock %}
