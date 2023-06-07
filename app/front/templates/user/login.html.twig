@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}
+    <a href="..">&lt;&lt; back </a>
+{% endblock %}
+
+{% block title %}📖 Login{% endblock %}
+
+{% block body %}
+    <form method="POST" name="?action=login" id="login">
+        <div>
+            <label>
+                <input value="" type="text" name="username" placeholder="username" />
+            </label>
+        </div>
+        <div>
+            <label>
+                <input value="" type="password" name="password" placeholder="password" />
+            </label>
+        </div>
+        <div>
+            <button type="submit">OK</button>
+        </div>
+    </form>
+{% endblock %}

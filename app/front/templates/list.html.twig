@@ -2,6 +2,10 @@
 
 {% block title %}List of read books 📚{% endblock %}
 
+{% block nav %}
+    {% if not authenticated %}<a href="?action=login">Login</a>{% endif %}
+{% endblock %}
+
 {% block body %}
     <table>
         <tr>
@@ -13,7 +17,9 @@
             <td></td>
         </tr>
 
-        {% include 'new.html.twig' %}
+        {% if authenticated %}
+            {% include 'new.html.twig' %}
+        {% endif %}
 
         {% for book in books %}
             <tr>
@@ -28,7 +34,7 @@
                 <td>{{ book.type }}</td>
                 <td>{{ book.note }}</td>
                 <td>{{ book.finished_at|date('Y⋅m⋅d') }}</td>
-                <td><a href="{{ book.slug }}" class="edit">🖍️</a></td>
+                <td>{% if authenticated %}<a href="?slug={{ book.slug }}" class="edit">🖍️</a>{% endif %}</td>
             </tr>
         {% endfor %}
     </table>
