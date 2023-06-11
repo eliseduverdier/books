@@ -32,11 +32,10 @@ class BookApp
         );
     }
 
-    public function show(string $slug): void
+    public function show(string $slug, bool $authenticated = false): void
     {
-
         $this->twig->display(
-            'edit.html.twig',
+            $authenticated ? 'edit.html.twig' : 'see.html.twig',
             [
                 'book' => $this->booksData->getBook($slug),
                 'types' => BooksData::TYPES,

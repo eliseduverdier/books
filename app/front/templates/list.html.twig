@@ -34,7 +34,13 @@
                 <td>{{ book.type }}</td>
                 <td>{{ book.note }}</td>
                 <td>{{ book.finished_at|date('Y⋅m⋅d') }}</td>
-                <td>{% if authenticated %}<a href="?slug={{ book.slug }}" class="edit">🖍️</a>{% endif %}</td>
+                <td>
+                    {% if authenticated %}
+                    <a href="?slug={{ book.slug }}&action=edit" class="edit">🖍️</a>
+                    {% else %}
+                    <a href="?slug={{ book.slug }}&action=show" class="see">👁</a>
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
     </table>

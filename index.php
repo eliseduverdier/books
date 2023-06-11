@@ -5,6 +5,7 @@ use App\User\Authentication;
 
 require dirname(__DIR__) . '/books/app/vendor/autoload.php';
 require dirname(__DIR__) . '/books/app/src/BookApp.php';
+require dirname(__DIR__) . '/books/app/src/Debug/util.php';
 
 // ROUTER
 
@@ -22,31 +23,36 @@ $slug = $_GET['slug'] ?? null;
 
 $authenticated = (new Authentication())->isAuthenticated();
 
-// DISPATCHER
+//// DISPATCH
 if ($authenticated) {
-    if (!$action && !$slug && $_POST) {
-        (new BookApp())->saveNew($_POST);
-        (new BookApp())->list(true);
-    } elseif (!$action && $slug) {
-        if ($_POST) {
-            (new BookApp())->edit($_POST, $slug);
-        } else {
-            (new BookApp())->show($slug);
-        }
-    } elseif ($action === 'delete' && $slug) {
-        (new BookApp())->delete($slug);
-    } else {
-        (new BookApp())->list(true);
+    switch ($action) {
+        case 'edit':
+        case 'show':
+            $_POST
+                ? (new BookApp())->edit($_POST, $slug)
+                : (new BookApp())->show($slug, true);
+            break;
+        case 'delete':
+            (new BookApp())->delete($slug);
+            break;
+        default:
+            (new BookApp())->list(true);
+            break;
     }
-} else {
-    if ($action === 'login') {
-        if ($_POST) {
-            (new BookApp())->login($_POST['username'], $_POST['password']);
-        (new BookApp())->list(true);
-        } else {
-            (new BookApp())->loginForm();
-        }
-    } else {
-        (new BookApp())->list();
+}
+
+if (!$authenticated) {
+    switch ($action) {
+        case 'login':
+            $_POST
+                ? (new BookApp())->login($_POST['username'], $_POST['password']) && (new BookApp())->list(true)
+                : (new BookApp())->loginForm();
+            break;
+        case 'show':
+            (new BookApp())->show($slug);
+            break;
+        default:
+            (new BookApp())->list();
+            break;
     }
 }
