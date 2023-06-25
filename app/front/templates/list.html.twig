@@ -14,7 +14,6 @@
             <td>type</td>
             <td>note</td>
             <td>finished date</td>
-            <td></td>
         </tr>
 
         {% if authenticated %}
@@ -24,23 +23,16 @@
         {% for book in books %}
             <tr>
                 <td>
-                    <strong>{{ book.title }}</strong>
+                    <a href="?slug={{ book.slug }}&action={{ authenticated ? 'edit' : 'show' }}" class="book-title"><strong>{{ book.title }}</strong></a>
                 </td>
 
                 <td>
                     <strong>{{ book.author }}</strong>
                 </td>
 
-                <td>{{ book.type }}</td>
+                <td><span class="{{ book.type }}">{{ book.type }}</span></td>
                 <td>{{ book.note }}</td>
-                <td>{{ book.finished_at|date('Y⋅m⋅d') }}</td>
-                <td>
-                    {% if authenticated %}
-                    <a href="?slug={{ book.slug }}&action=edit" class="edit">🖍️</a>
-                    {% else %}
-                    <a href="?slug={{ book.slug }}&action=show" class="see">👁</a>
-                    {% endif %}
-                </td>
+                <td>{{ book.finished_at ? book.finished_at|date('Y⋅m⋅d') : 'currently reading' }}</td>
             </tr>
         {% endfor %}
     </table>

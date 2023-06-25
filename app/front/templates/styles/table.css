@@ -1,0 +1,17 @@
+
+/*
+ *  LIST
+ */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr {
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+td {
+    padding: 10px;
+}

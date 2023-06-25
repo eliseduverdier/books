@@ -30,9 +30,9 @@ class Database implements DataInterface
             'slug' => Util::slugify($data),
             'title' => $data['title'],
             'author' => $data['author'],
-            'type_id' => $data['type'],
-            'note_id' => $data['note'],
-            'finished_at' => $data['date'],
+            'type_id' => $data['type'] ?? null,
+            'note_id' => $data['note'] ?? null,
+            'finished_at' => empty($data['date']) ? null : $data['date'],
         ]);
     }
 
@@ -44,7 +44,7 @@ class Database implements DataInterface
             'type_id' => $data['type'],
             'note_id' => $data['note'],
             'summary' => $data['summary'],
-            'finished_at' => empty($data['date']) ? date('Y-m-d') : $data['date'],
+            'finished_at' => empty($data['date']) ? null : $data['date'],
         ]);
     }
 

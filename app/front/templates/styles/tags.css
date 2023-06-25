@@ -1,0 +1,44 @@
+:root {
+    --text: white;
+    --essay: #6a5392;
+    --novel: #088395;
+    --poetry: #05BFDB;
+    --biography: #8EAC50;
+    --art: #d2ad12;
+}
+
+[data-theme="dark"] {
+    --text: black;
+    --essay: #8c6fa3;
+    --novel: #0b9db1;
+    --poetry: #0bdbe0;
+    --biography: #a3b76d;
+    --art: #e0c12b;
+}
+
+
+.essay, .novel, .poetry, .biography, .art {
+    color: var(--text);
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.essay {
+    background-color: var(--essay);
+}
+
+.novel {
+    background-color: var(--novel);
+}
+
+.poetry {
+    background-color: var(--poetry);
+}
+
+.biography {
+    background-color: var(--biography);
+}
+
+.art {
+    background-color: var(--art);
+}

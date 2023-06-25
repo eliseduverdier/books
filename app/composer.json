@@ -27,7 +27,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "App\\Tests\\": "tests/"
+      "App\\Tests\\": "src/tests/"
     }
   },
   "replace": {
@@ -47,5 +47,8 @@
       "allow-contrib": true,
       "require": "6.2.*"
     }
+  },
+  "require-dev": {
+    "ext-curl": "*"
   }
 }

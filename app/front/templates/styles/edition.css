@@ -1,0 +1,45 @@
+
+
+/*
+ * NEW / EDIT
+ */
+input, button, select, textarea {
+    border: 1px solid var(--fg-color);
+    padding: 5px;
+    font: normal 14px monospace;
+}
+
+#edit input, #edit select, textarea {
+    max-width: 600px;
+    width: 90%;
+    margin: 5px 0;
+}
+
+input, select, textarea {
+    background: none;
+    color: var(--fg-color);
+}
+
+input:focus, select:focus, textarea:focus {
+    border-bottom: 3px solid var(--fg-color);
+    outline: none;
+}
+
+button {
+    background: var(--fg-color);
+    color: var(--bg-color);
+}
+
+button.delete {
+    background: firebrick;
+    border: 1px solid firebrick;
+}
+
+button.delete a {
+    border-bottom: none;
+    color: white;
+}
+
+p#summary {
+    max-width: 600px;
+}

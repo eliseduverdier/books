@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}
+    <a href="..">&lt;&lt; back </a>
+{% endblock %}
+
+{% block title %}📖 {{ book.title }}{% endblock %}
+
+{% block body %}
+    <p>
+        By: <strong>{{ book.author }}</strong>
+    </p>
+    <p>
+        Type: <strong>{{ book.type }}</strong>
+    </p>
+    <p>
+        Note: <strong>{{ book.note }}</strong>
+    </p>
+    <p>
+        Finished at: <strong>{{ book.finished_at ? book.finished_at|date('Y⋅m⋅d') : 'currently reading' }}</strong>
+    </p>
+        <hr>
+    <p id="summary">
+       {{ book.summary|replace({'\n': '<br>'})|raw }}
+    </p>
+{% endblock %}

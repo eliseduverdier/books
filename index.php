@@ -22,7 +22,6 @@ $slug = $_GET['slug'] ?? null;
 // AUTH
 
 $authenticated = (new Authentication())->isAuthenticated();
-
 //// DISPATCH
 if ($authenticated) {
     switch ($action) {
@@ -36,11 +35,11 @@ if ($authenticated) {
             (new BookApp())->delete($slug);
             break;
         default:
+            if ($_POST) (new BookApp())->saveNew($_POST);
             (new BookApp())->list(true);
             break;
     }
 }
-
 if (!$authenticated) {
     switch ($action) {
         case 'login':

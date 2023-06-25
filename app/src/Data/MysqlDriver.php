@@ -5,16 +5,21 @@ namespace App\Data;
 class MysqlDriver
 {
     protected int|\mysqli $connection = 0;
-    protected string $tableName = '';
 
-    public function __construct(string $tableName)
+    public function __construct(protected string $tableName = '')
     {
-        $this->tableName = $tableName;
-        $_SERVER['SERVER_NAME'] === 'localhost'
-            ? require __DIR__ . '/../../.env.dist.php'
-            : require __DIR__ . '/../../.env.php';
+        // TODO find a better way to handle this
+        if (empty($_SERVER['SERVER_NAME']) || $_SERVER['SERVER_NAME'] === 'localhost') {
+            require __DIR__ . '/../../.env.dist.php';
+        } else {
+             require __DIR__ . '/../../.env.php';
+        }
+        if (getenv('ENV') === 'test') {
+            $DB_NAME = 'books_test';
+        }
 
         $this->connection = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
+
         if (!$this->connection) {
             throw new \Exception('[DATABASE] Connection failed: ' . mysqli_connect_error());
         }
@@ -26,7 +31,7 @@ class MysqlDriver
         $result = mysqli_query($this->connection, '
 SELECT slug, title, author, type_id AS type, books_notes.note, finished_at
 FROM books JOIN books_notes ON books_notes.id = books.note_id
-ORDER BY finished_at DESC;
+ORDER BY finished_at IS NULL DESC, finished_at DESC;
          ');
 
         return mysqli_fetch_all($result, MYSQLI_ASSOC) ?? [];
@@ -62,7 +67,7 @@ WHERE $field = ?;
 
         $types = '';
         foreach ($data as $value) {
-            $types .= (is_int($value) ? 'i' : 's');
+            $types .= (!is_numeric($value) ? 's' : 'i');
         }
         $stmt->bind_param($types, ...$values);
 
@@ -97,7 +102,12 @@ WHERE $field = ?;
 
     public function selectFromTable(string $tableName, string $fields = '*', ?string $by = null): array
     {
-        $result = mysqli_query($this->connection, "SELECT $fields FROM $tableName" .($by ? " ORDER BY $by" : '') . ";");
+        $result = mysqli_query($this->connection, "SELECT $fields FROM $tableName" . ($by ? " ORDER BY $by" : '') . ";");
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+
+    public function rawQuery(string $query): void
+    {
+        mysqli_query($this->connection, $query);
     }
 }

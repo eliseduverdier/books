@@ -47,6 +47,8 @@ class BookApp
     public function saveNew(array $data): void
     {
         $this->booksData->save($data);
+        header('HTTP/2 301 Moved Permanently');
+        header('Location: index.php');
     }
 
     public function edit(array $data, string $slug): void
@@ -85,5 +87,7 @@ class BookApp
     public function login(string $username, string $password): void
     {
         (new Authentication())->login($username, $password);
+        header('HTTP/2 301 Moved Permanently');
+        header('Location: index.php');
     }
 }
