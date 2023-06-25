@@ -1,4 +1,3 @@
-
 /*
  *  LIST
  */
@@ -14,4 +13,8 @@ tr {
 
 td {
     padding: 10px;
+}
+
+tr.reading {
+    opacity: .5;
 }

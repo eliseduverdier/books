@@ -11,7 +11,7 @@
 }
 
 html {
-    font: normal 13px monospace;
+    font: normal 15px monospace;
     color: var(--fg-color);
     background-color: var(--bg-color);
 }

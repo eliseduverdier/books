@@ -21,7 +21,7 @@
         {% endif %}
 
         {% for book in books %}
-            <tr>
+            <tr class="{{ book.finished_at ? 'done' : 'reading' }}">
                 <td>
                     <a href="?slug={{ book.slug }}&action={{ authenticated ? 'edit' : 'show' }}" class="book-title"><strong>{{ book.title }}</strong></a>
                 </td>
