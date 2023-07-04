@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block nav %}
-    <a href="..">&lt;&lt; back </a>
+    {{ parent() }}
+    <div><a href="..">&lt;&lt; back </a></div>
 {% endblock %}
 
 {% block title %}📖 {{ book.title }}{% endblock %}
@@ -23,7 +24,8 @@
                 <select name="type">
                     <option>—Type—</option>
                     {% for type in types %}
-                        <option value="{{ type }}" {{ book.type == type ? 'selected' : '' }} autocomplete="off"> {{ type }} </option>
+                        <option value="{{ type }}" {{ book.type == type ? 'selected' : '' }}
+                                autocomplete="off"> {{ type }} </option>
                     {% endfor %}
                 </select>
             </label>
@@ -31,21 +33,25 @@
         <div>
             <label>
                 <select name="note">
-                    <option>{{notes[book.note_id]}}</option>
+                    <option value="">
+                            —Note—
+                    </option>
                     {% for key, note in notes %}
-                        <option value="{{ key }}" {{ book.note_id == key ? 'selected' : '' }} autocomplete="off">{{ key }} - {{ note }} </option>
+                        <option value="{{ key }}" {{ book.note_id is not null and book.note_id == key ? 'selected' : '' }}
+                                autocomplete="off">{{ key }} - {{ note }} </option>
                     {% endfor %}
                 </select>
             </label>
         </div>
         <div>
             <label>
-                <input value="{{ book.finished_at ? book.finished_at|date('Y-m-d') : '' }}" type="date" name="date" placeholder="date"/>
+                <input value="{{ book.finished_at ? book.finished_at|date('Y-m-d') : '' }}" type="date" name="date"
+                       placeholder="date"/>
             </label>
         </div>
         <div>
             <label>
-                <textarea name="summary" cols="30" rows="20">{{ book.summary }}</textarea>
+                <textarea name="summary" rows="20">{{ book.summary }}</textarea>
             </label>
         </div>
         <div>

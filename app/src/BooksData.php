@@ -17,13 +17,13 @@ class BooksData
     ];
 
     public const NOTES = [
-        '6' => '🤯 (extraordinary)',
-        '5' => '⭐ ⭐ ⭐ ⭐ (great)',
-        '4' => '🥰 (adorable)',
-        '3' => '⭐ ⭐ ⭐ (good)',
-        '2' => '⭐ ⭐ (nice)',
-        '1' => '⭐ (mh)',
-        '0' => '😞',
+        '6' => '✨ (extraordinary)',
+        '5' => '★★★★ (great)',
+        '4' => '♡ (adorable)',
+        '3' => '★★★ (good)',
+        '2' => '★★ (nice)',
+        '1' => '★ (mh)',
+        '0' => '☆ (nope)',
     ];
 
     protected Database $dataManager;

@@ -34,6 +34,9 @@ if ($authenticated) {
         case 'delete':
             (new BookApp())->delete($slug);
             break;
+        case 'logout':
+            (new BookApp())->logout();
+            break;
         default:
             if ($_POST) (new BookApp())->saveNew($_POST);
             (new BookApp())->list(true);

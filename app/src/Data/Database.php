@@ -21,6 +21,7 @@ class Database implements DataInterface
 
     public function getOne(string $slug): array
     {
+//        dd($this->driver->selectOne(['slug' => $slug]));
         return $this->driver->selectOne(['slug' => $slug]);
     }
 
@@ -31,7 +32,7 @@ class Database implements DataInterface
             'title' => $data['title'],
             'author' => $data['author'],
             'type_id' => $data['type'] ?? null,
-            'note_id' => $data['note'] ?? null,
+            'note_id' => $data['note'] === '' ? null : $data['note'],
             'finished_at' => empty($data['date']) ? null : $data['date'],
         ]);
     }
@@ -42,7 +43,7 @@ class Database implements DataInterface
             'title' => $data['title'],
             'author' => $data['author'],
             'type_id' => $data['type'],
-            'note_id' => $data['note'],
+            'note_id' => $data['note'] === '' ? null : $data['note'],
             'summary' => $data['summary'],
             'finished_at' => empty($data['date']) ? null : $data['date'],
         ]);

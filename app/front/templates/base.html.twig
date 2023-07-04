@@ -19,10 +19,19 @@
 <nav>
     <div>
         <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox"/>🌓
+            <input type="checkbox" id="checkbox"/> 🌓
         </label>
     </div>
-    {% block nav %} {% endblock %}
+
+    {% block nav %}
+        <div id="auth">
+            {% if not authenticated %}
+                <a href="?action=login">Login</a>
+            {% else %}
+                <a href="?action=logout">Logout</a>
+            {% endif %}
+        </div>
+    {% endblock %}
 </nav>
 
 <h1>

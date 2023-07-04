@@ -31,4 +31,9 @@ class Authentication
     {
         return $_COOKIE['user'] === md5($this->username . $this->password);
     }
+
+    public function logout(): void
+    {
+        setcookie('user', '');
+    }
 }

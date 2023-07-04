@@ -2,18 +2,18 @@
     <form method="POST">
         <td>
             <label>
-                <input type="text" name="title" placeholder="title"/>
+                <input type="text" name="title" placeholder="title" autocapitalize="words"/>
             </label>
         </td>
         <td>
             <label>
-                <input type="text" name="author" placeholder="author"/>
+                <input type="text" name="author" placeholder="author" autocapitalize="words"/>
             </label>
         </td>
         <td>
             <label>
                 <select name="type">
-                    <option>—Type—</option>
+                    <option value="">—Type—</option>
                     {% for type in types %}
                     <option value="{{type}}"> {{ type }} </option>
                     {% endfor %}
@@ -23,7 +23,7 @@
         <td>
             <label>
                 <select name="note">
-                    <option>—Note—</option>
+                    <option value="">—Note—</option>
                     {% for key, type in notes %}
                     <option value="{{key}}"> {{ type }} </option>
                     {% endfor %}

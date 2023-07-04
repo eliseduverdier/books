@@ -43,3 +43,7 @@ a.book-title:hover {
     color: var(--link-color);
     border-bottom: 3px solid var(--fg-color);
 }
+
+#auth {
+    float: right;
+}

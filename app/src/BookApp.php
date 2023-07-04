@@ -21,26 +21,19 @@ class BookApp
 
     public function list(bool $authenticated = false): void
     {
-        $this->twig->display(
+        $this->display(
             'list.html.twig',
-            [
-                'books' => $this->booksData->getBooks(),
-                'types' => BooksData::TYPES,
-                'notes' => BooksData::NOTES,
-                'authenticated' => $authenticated,
-            ]
+            ['books' => $this->booksData->getBooks()],
+            $authenticated
         );
     }
 
     public function show(string $slug, bool $authenticated = false): void
     {
-        $this->twig->display(
+        $this->display(
             $authenticated ? 'edit.html.twig' : 'see.html.twig',
-            [
-                'book' => $this->booksData->getBook($slug),
-                'types' => BooksData::TYPES,
-                'notes' => BooksData::NOTES,
-            ]
+            ['book' => $this->booksData->getBook($slug)],
+            $authenticated
         );
     }
 
@@ -89,5 +82,25 @@ class BookApp
         (new Authentication())->login($username, $password);
         header('HTTP/2 301 Moved Permanently');
         header('Location: index.php');
+    }
+
+    public function logout(): void
+    {
+        (new Authentication())->logout();
+        header('HTTP/2 301 Moved Permanently');
+        header('Location: index.php');
+    }
+
+    protected function display(string $template, array $data, bool $authenticated): void
+    {
+        $this->twig->display(
+            $template,
+            array_merge($data,
+                [
+                    'types' => BooksData::TYPES,
+                    'notes' => BooksData::NOTES,
+                    'authenticated' => $authenticated,
+                ])
+        );
     }
 }

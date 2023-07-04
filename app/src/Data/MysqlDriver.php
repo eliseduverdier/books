@@ -30,7 +30,7 @@ class MysqlDriver
     {
         $result = mysqli_query($this->connection, '
 SELECT slug, title, author, type_id AS type, books_notes.note, finished_at
-FROM books JOIN books_notes ON books_notes.id = books.note_id
+FROM books LEFT JOIN books_notes ON books_notes.id = books.note_id
 ORDER BY finished_at IS NULL DESC, finished_at DESC;
          ');
 
@@ -43,7 +43,7 @@ ORDER BY finished_at IS NULL DESC, finished_at DESC;
         $stmt = $this->connection->prepare(
             "
 SELECT slug, title, summary, author, type_id AS type, books_notes.note, books_notes.id AS note_id, finished_at 
-FROM books JOIN books_notes ON books_notes.id = books.note_id 
+FROM books LEFT JOIN books_notes ON books_notes.id = books.note_id 
 WHERE $field = ?;
 "
         );
@@ -67,7 +67,7 @@ WHERE $field = ?;
 
         $types = '';
         foreach ($data as $value) {
-            $types .= (!is_numeric($value) ? 's' : 'i');
+            $types .= $this->getValueTypeAsString($value);
         }
         $stmt->bind_param($types, ...$values);
 
@@ -86,7 +86,7 @@ WHERE $field = ?;
 
         $types = '';
         foreach ($params as $value) {
-            $types .= (is_int($value) ? 'i' : 's');
+            $types .= $this->getValueTypeAsString($value);
         }
         $stmt->bind_param($types, ...array_values($params));
         return $stmt->execute();
@@ -109,5 +109,15 @@ WHERE $field = ?;
     public function rawQuery(string $query): void
     {
         mysqli_query($this->connection, $query);
+    }
+
+    protected function getValueTypeAsString(mixed $value): string
+    {
+        return match (gettype($value)) {
+            'integer', 'boolean' => 'i',
+            'double' => 'd',
+            'array', 'object', 'resource' => 'b',
+            /*'string', */default => 's',
+        };
     }
 }

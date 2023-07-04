@@ -1,17 +1,17 @@
-
-
 /*
  * NEW / EDIT
  */
+
+form {
+    max-width: 600px;
+}
 input, button, select, textarea {
     border: 1px solid var(--fg-color);
     padding: 5px;
     font: normal 14px monospace;
 }
-
-#edit input, #edit select, textarea {
-    max-width: 600px;
-    width: 90%;
+input[type=text], select, textarea {
+    width: 100%;
     margin: 5px 0;
 }
 
@@ -33,6 +33,7 @@ button {
 button.delete {
     background: firebrick;
     border: 1px solid firebrick;
+    float: right;
 }
 
 button.delete a {
