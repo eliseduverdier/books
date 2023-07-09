@@ -18,3 +18,18 @@ td {
 tr.reading {
     opacity: .5;
 }
+td.title {
+    width: 40%;
+}
+td.author {
+    width: 25%;
+}
+td.type {
+    width: 10%;
+}
+td.note {
+    width: 10%;
+}
+td.finished {
+    width: 15%;
+}

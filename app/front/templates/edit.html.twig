@@ -22,7 +22,7 @@
         <div>
             <label>
                 <select name="type">
-                    <option>—Type—</option>
+                    <option value="">—Type—</option>
                     {% for type in types %}
                         <option value="{{ type }}" {{ book.type == type ? 'selected' : '' }}
                                 autocomplete="off"> {{ type }} </option>

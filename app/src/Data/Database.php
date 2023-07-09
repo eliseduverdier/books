@@ -14,24 +14,23 @@ class Database implements DataInterface
         $this->driver = new MysqlDriver('books');
     }
 
-    public function getAll(): array
+    public function getAll(array $filter = []): array
     {
-        return $this->driver->selectAll();
+        return $this->driver->selectAll(filter: $filter);
     }
 
     public function getOne(string $slug): array
     {
-//        dd($this->driver->selectOne(['slug' => $slug]));
-        return $this->driver->selectOne(['slug' => $slug]);
+        return $this->driver->selectOne(['books.slug' => $slug]);
     }
 
     public function save(array $data): bool
     {
-        return $this->driver->save([
-            'slug' => Util::slugify($data),
+        return $this->driver->saveBook([
+            'books.slug' => Util::slugifyBook($data),
             'title' => $data['title'],
             'author' => $data['author'],
-            'type_id' => $data['type'] ?? null,
+            'type_id' => $data['type'] === '' ? null : $data['type'],
             'note_id' => $data['note'] === '' ? null : $data['note'],
             'finished_at' => empty($data['date']) ? null : $data['date'],
         ]);
@@ -42,7 +41,7 @@ class Database implements DataInterface
         return $this->driver->edit($slug, [
             'title' => $data['title'],
             'author' => $data['author'],
-            'type_id' => $data['type'],
+            'type_id' => $data['type'] === '' ? null : $data['type'],
             'note_id' => $data['note'] === '' ? null : $data['note'],
             'summary' => $data['summary'],
             'finished_at' => empty($data['date']) ? null : $data['date'],

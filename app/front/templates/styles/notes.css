@@ -1,0 +1,24 @@
+:root {
+    --text: white;
+    --note_4: #EA6BE0;
+    --note_6: #ffc821;
+    --note_5: #c5c13c;
+    --note_3: #97b355;
+    --note_2: #76a269;
+    --note_1: #678c73;
+    --note_0: #687570;
+}
+
+.note_0, .note_1, .note_2, .note_3, .note_4, .note_5, .note_6 {
+    color: var(--text);
+    border-radius: 5px;
+    padding: 3px;
+    white-space: nowrap;
+}
+.note_0 {background-color: var(--note_0)}
+.note_1 {background-color: var(--note_1)}
+.note_2 {background-color: var(--note_2)}
+.note_3 {background-color: var(--note_3)}
+.note_4 {background-color: var(--note_4)}
+.note_5 {background-color: var(--note_5)}
+.note_6 {background-color: var(--note_6)}

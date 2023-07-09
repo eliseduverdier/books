@@ -44,6 +44,11 @@ a.book-title:hover {
     border-bottom: 3px solid var(--fg-color);
 }
 
+a.filter-link {
+    border-bottom: none;
+    font-weight: normal;
+}
+
 #auth {
     float: right;
 }

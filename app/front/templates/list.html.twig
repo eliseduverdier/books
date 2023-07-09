@@ -5,11 +5,24 @@
 {% block body %}
     <table>
         <tr>
-            <td>title</td>
-            <td>author</td>
-            <td>type</td>
-            <td>note</td>
-            <td>finished date</td>
+            <td class="title">
+                title
+            </td>
+            <td class="author">
+                author
+                {% if filter.author is defined %} <a href="?action=list">×</a> {% endif %}
+            </td>
+            <td class="type">
+                type
+                {% if filter.type is defined %} <a href="?action=list">×</a> {% endif %}
+            </td>
+            <td class="note">
+                note
+                {% if filter.note is defined %} <a href="?action=list">×</a> {% endif %}
+            </td>
+            <td class="finished">
+                finished date
+            </td>
         </tr>
 
         {% if authenticated %}
@@ -19,15 +32,26 @@
         {% for book in books %}
             <tr class="{{ book.finished_at ? 'done' : 'reading' }}">
                 <td>
-                    <a href="?slug={{ book.slug }}&action={{ authenticated ? 'edit' : 'show' }}" class="book-title"><strong>{{ book.title }}</strong></a>
+                    <a href="?slug={{ book.slug }}&action={{ authenticated ? 'edit' : 'show' }}"
+                       class="book-title"><strong>{{ book.title }}</strong></a>
                 </td>
 
                 <td>
-                    <strong>{{ book.author }}</strong>
+                    <a href="?filter[author]={{ book.author }}" class="filter-link">
+                        <strong>{{ book.author_name ?? book.author }}</strong>
+                    </a>
                 </td>
 
-                <td><span class="{{ book.type }}">{{ book.type }}</span></td>
-                <td>{{ book.note }}</td>
+                <td>
+                    <a href="?filter[type]={{ book.type }}" class="filter-link">
+                        <span class="{{ book.type }}">{{ book.type }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="?filter[note]={{ book.note_id }}" class="filter-link">
+                        <span class="note_{{ book.note_id }}">{{ book.note }}</span>
+                    </a>
+                </td>
                 <td>{{ book.finished_at ? book.finished_at|date('Y⋅m⋅d') : 'currently reading' }}</td>
             </tr>
         {% endfor %}

@@ -19,11 +19,11 @@ class BookApp
         $this->booksData = new \App\BooksData();
     }
 
-    public function list(bool $authenticated = false): void
+    public function list(bool $authenticated = false, array $filter = []): void
     {
         $this->display(
             'list.html.twig',
-            ['books' => $this->booksData->getBooks()],
+            ['books' => $this->booksData->getBooks($filter), 'filter'=> $filter],
             $authenticated
         );
     }

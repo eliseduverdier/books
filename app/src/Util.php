@@ -4,9 +4,9 @@ namespace App;
 
 class Util
 {
-    public static function slugify(array $book): string
+    public static function slugify(string $str): string
     {
-        $slug = strtolower($book['author'] .'_'.$book['title']);
+        $slug = strtolower($str);
         $slug = str_replace([' '], '_', $slug);
         $slug = str_replace(['àäâá'], 'a', $slug);
         $slug = str_replace(['éèëê'], 'e', $slug);
@@ -18,5 +18,10 @@ class Util
         $slug = str_replace(['ç'], 'c', $slug);
 
         return preg_replace('/\W*/', '', $slug);
+    }
+
+    public static function slugifyBook(array $book): string
+    {
+        return self::slugify($book['author'] . '_' . $book['title']);
     }
 }

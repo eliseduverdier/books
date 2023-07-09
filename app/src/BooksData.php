@@ -34,14 +34,13 @@ class BooksData
     public function __construct()
     {
         $this->dataManager = new Database();
-        $this->booksData = $this->dataManager->getAll();
         $this->notes = $this->dataManager->getNotes();
         $this->types = $this->dataManager->getTypes();
     }
 
-    public function getBooks(): array
+    public function getBooks(array $filter): array
     {
-        return $this->dataManager->getAll();
+        return $this->dataManager->getAll($filter);
     }
 
     public function getBook(string $slug): array

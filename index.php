@@ -20,8 +20,8 @@ $slug = $_GET['slug'] ?? null;
 //}
 
 // AUTH
-
 $authenticated = (new Authentication())->isAuthenticated();
+
 //// DISPATCH
 if ($authenticated) {
     switch ($action) {
@@ -39,7 +39,7 @@ if ($authenticated) {
             break;
         default:
             if ($_POST) (new BookApp())->saveNew($_POST);
-            (new BookApp())->list(true);
+            (new BookApp())->list(true, $_GET['filter'] ?? []);
             break;
     }
 }
@@ -54,7 +54,7 @@ if (!$authenticated) {
             (new BookApp())->show($slug);
             break;
         default:
-            (new BookApp())->list();
+            (new BookApp())->list(false, $_GET['filter'] ?? null);
             break;
     }
 }
