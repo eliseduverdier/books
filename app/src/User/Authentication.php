@@ -29,6 +29,9 @@ class Authentication
 
     public function isAuthenticated(): bool
     {
+        if (!isset($_COOKIE['user'])) {
+            return false;
+        }
         return $_COOKIE['user'] === md5($this->username . $this->password);
     }
 

@@ -33,23 +33,23 @@
             <tr class="{{ book.finished_at ? 'done' : 'reading' }}">
                 <td>
                     <a href="?slug={{ book.slug }}&action={{ authenticated ? 'edit' : 'show' }}"
-                       class="book-title"><strong>{{ book.title }}</strong></a>
+                       class="list__book-title"><strong>{{ book.title }}</strong></a>
                 </td>
 
                 <td>
-                    <a href="?filter[author]={{ book.author }}" class="filter-link">
+                    <a href="?filter[author]={{ book.author }}" class="list__filter-link list__authors-name">
                         <strong>{{ book.author_name ?? book.author }}</strong>
                     </a>
                 </td>
 
                 <td>
-                    <a href="?filter[type]={{ book.type }}" class="filter-link">
-                        <span class="{{ book.type }}">{{ book.type }}</span>
+                    <a href="?filter[type]={{ book.type }}" class="list__filter-link">
+                        <span class="badge {{ book.type }}">{{ book.type }}</span>
                     </a>
                 </td>
                 <td>
-                    <a href="?filter[note]={{ book.note_id }}" class="filter-link">
-                        <span class="note_{{ book.note_id }}">{{ book.note }}</span>
+                    <a href="?filter[note]={{ book.note_id }}" class="list__filter-link">
+                        <span class="badge note_{{ book.note_id }}">{{ book.note }}</span>
                     </a>
                 </td>
                 <td>{{ book.finished_at ? book.finished_at|date('Y⋅m⋅d') : 'currently reading' }}</td>

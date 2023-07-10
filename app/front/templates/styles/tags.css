@@ -1,44 +1,27 @@
 :root {
-    --text: white;
-    --essay: #6a5392;
-    --novel: #088395;
-    --poetry: #05BFDB;
-    --biography: #8EAC50;
-    --art: #d2ad12;
+    --tags__text: white;
+    --tags__essay: #6a5392;
+    --tags__novel: #088395;
+    --tags__poetry: #05BFDB;
+    --tags__biography: #8EAC50;
+    --tags__art: #d2ad12;
 }
 
 [data-theme="dark"] {
-    --text: black;
-    --essay: #8c6fa3;
-    --novel: #0b9db1;
-    --poetry: #0bdbe0;
-    --biography: #a3b76d;
-    --art: #e0c12b;
+    --tags__text: black;
+    --tags__essay: #8c6fa3;
+    --tags__novel: #0b9db1;
+    --tags__poetry: #0bdbe0;
+    --tags__biography: #a3b76d;
+    --tags__art: #e0c12b;
 }
-
 
 .essay, .novel, .poetry, .biography, .art {
-    color: var(--text);
-    border-radius: 5px;
-    padding: 3px;
+    color: var(--tags__text);
 }
 
-.essay {
-    background-color: var(--essay);
-}
-
-.novel {
-    background-color: var(--novel);
-}
-
-.poetry {
-    background-color: var(--poetry);
-}
-
-.biography {
-    background-color: var(--biography);
-}
-
-.art {
-    background-color: var(--art);
-}
+.essay { background-color: var(--tags__essay); }
+.novel { background-color: var(--tags__novel); }
+.poetry { background-color: var(--tags__poetry); }
+.biography { background-color: var(--tags__biography); }
+.art { background-color: var(--tags__art); }

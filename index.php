@@ -54,7 +54,7 @@ if (!$authenticated) {
             (new BookApp())->show($slug);
             break;
         default:
-            (new BookApp())->list(false, $_GET['filter'] ?? null);
+            (new BookApp())->list(false, $_GET['filter'] ?? []);
             break;
     }
 }

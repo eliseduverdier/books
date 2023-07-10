@@ -34,17 +34,21 @@ a.edit, a.see {
     border-bottom: none;
 }
 
-a.book-title {
+a.list__book-title {
+
+    color: var(--fg-color);
+}
+a.list__book-title {
     color: var(--fg-color);
     border-bottom: 1px solid var(--fg-color);
 }
 
-a.book-title:hover {
+a.list__book-title:hover {
     color: var(--link-color);
     border-bottom: 3px solid var(--fg-color);
 }
 
-a.filter-link {
+a.list__filter-link {
     border-bottom: none;
     font-weight: normal;
 }

@@ -1,24 +1,26 @@
 :root {
-    --text: white;
-    --note_4: #EA6BE0;
-    --note_6: #ffc821;
-    --note_5: #c5c13c;
-    --note_3: #97b355;
-    --note_2: #76a269;
-    --note_1: #678c73;
-    --note_0: #687570;
+    --notes__text: white;
+    --notes__note_4: #EA6BE0;
+    --notes__note_6: #ffc821;
+    --notes__note_5: #c5c13c;
+    --notes__note_3: #97b355;
+    --notes__note_2: #76a269;
+    --notes__note_1: #678c73;
+    --notes__note_0: #687570;
+}
+
+[data-theme="dark"] {
+    --notes__text: black;
 }
 
 .note_0, .note_1, .note_2, .note_3, .note_4, .note_5, .note_6 {
-    color: var(--text);
-    border-radius: 5px;
-    padding: 3px;
-    white-space: nowrap;
+    color: var(--notes__text);
 }
-.note_0 {background-color: var(--note_0)}
-.note_1 {background-color: var(--note_1)}
-.note_2 {background-color: var(--note_2)}
-.note_3 {background-color: var(--note_3)}
-.note_4 {background-color: var(--note_4)}
-.note_5 {background-color: var(--note_5)}
-.note_6 {background-color: var(--note_6)}
+
+.note_0 {background-color: var(--notes__note_0)}
+.note_1 {background-color: var(--notes__note_1)}
+.note_2 {background-color: var(--notes__note_2)}
+.note_3 {background-color: var(--notes__note_3)}
+.note_4 {background-color: var(--notes__note_4)}
+.note_5 {background-color: var(--notes__note_5)}
+.note_6 {background-color: var(--notes__note_6)}
