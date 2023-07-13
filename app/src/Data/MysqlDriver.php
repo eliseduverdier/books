@@ -36,12 +36,14 @@ class MysqlDriver
     public function selectAll(string $fields = '*', array $filter = []): array
     {
         $stmt = $this->connection->prepare("
-SELECT books.slug, title, a.name AS author_name, author, type_id AS type, n.note AS note, n.id AS note_id, finished_at
+SELECT books.slug, title, a.name AS author_name, author, type_id AS type, n.note AS note, n.id AS note_id, finished_at, abandonned_at
 FROM {$this->tableName} 
     LEFT JOIN books_notes n ON n.id = books.note_id
     LEFT JOIN books_author a ON a.slug = books.author " .
-            (empty($filter) ? '' : $this->buildWhereClause($filter)) .
-            ' ORDER BY finished_at IS NULL DESC, finished_at DESC;'
+            (empty($filter) ? '' : $this->buildWhereClause($filter))
+            . " ORDER BY abandonned_at ASC, finished_at IS NULL DESC, finished_at DESC ;"
+
+
         );
         $this->bindWhereClause($filter, $stmt);
         $stmt->execute();
@@ -55,7 +57,7 @@ FROM {$this->tableName}
         $field = array_keys($by)[0];
         $stmt = $this->connection->prepare(
             "
-SELECT books.slug, title, summary, author, a.name AS author_name, type_id AS type, n.note AS note, n.id AS note_id, finished_at 
+SELECT books.slug, title, summary, author, a.name AS author_name, type_id AS type, n.note AS note, n.id AS note_id, finished_at, abandonned_at
 FROM books
     LEFT JOIN books_notes n ON n.id = books.note_id 
     LEFT JOIN books_author a ON a.slug = books.author
@@ -95,7 +97,15 @@ WHERE $field = ?;
         }
         $stmt->bind_param($types, ...$values);
 
-        return $stmt->execute();
+        try {
+            return $stmt->execute();
+        } catch (\Exception $e) {
+            if (str_contains($e->getMessage(), 'Duplicate entry')) {
+                return false;
+            } else {
+                throw $e;
+            }
+        }
     }
 
     public function edit(string $slug, array $data): bool

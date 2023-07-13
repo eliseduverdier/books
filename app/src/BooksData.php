@@ -48,9 +48,9 @@ class BooksData
         return $this->dataManager->getOne($slug);
     }
 
-    public function save(array $newBook): void
+    public function save(array $newBook): bool
     {
-        $this->dataManager->save($newBook);
+        return $this->dataManager->save($newBook);
     }
 
     public function edit(string $slug, array $newBook): array

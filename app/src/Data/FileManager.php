@@ -14,7 +14,7 @@ class FileManager implements DataInterface
     public function getAll(): array
     {
         $json = json_decode(file_get_contents($this->filePath), true) ?? [];
-        uasort($json, fn ($a, $b) => ($a['date'] > $b['date']) ? -1 : 1);
+        uasort($json, fn ($a, $b) => ($a['finished_at'] > $b['finished_at']) ? -1 : 1);
 
         return $json;
     }

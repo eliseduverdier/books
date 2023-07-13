@@ -18,6 +18,10 @@ td {
 tr.reading {
     opacity: .5;
 }
+tr.abandonned {
+    text-decoration: line-through;
+    opacity: .7;
+}
 td.title {
     width: 40%;
 }

@@ -32,7 +32,7 @@ class Database implements DataInterface
             'author' => $data['author'],
             'type_id' => $data['type'] === '' ? null : $data['type'],
             'note_id' => $data['note'] === '' ? null : $data['note'],
-            'finished_at' => empty($data['date']) ? null : $data['date'],
+            'finished_at' => empty($data['finished_at']) ? null : $data['finished_at'],
         ]);
     }
 
@@ -44,7 +44,8 @@ class Database implements DataInterface
             'type_id' => $data['type'] === '' ? null : $data['type'],
             'note_id' => $data['note'] === '' ? null : $data['note'],
             'summary' => $data['summary'],
-            'finished_at' => empty($data['date']) ? null : $data['date'],
+            'finished_at' => empty($data['finished_at']) ? null : $data['finished_at'],
+            'abandonned_at' => $data['abandonned_at'] ? date('Y-m-d') : null,
         ]);
     }
 
@@ -57,6 +58,7 @@ class Database implements DataInterface
     {
         return $this->driver->selectFromTable('books_notes');
     }
+
     public function getTypes(): array
     {
         return $this->driver->selectFromTable('books_types');

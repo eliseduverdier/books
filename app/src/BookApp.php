@@ -39,7 +39,15 @@ class BookApp
 
     public function saveNew(array $data): void
     {
-        $this->booksData->save($data);
+        if(!$this->booksData->save($data)) { // will return false if book already exists
+            $this->twig->display(
+                'error.html.twig',
+                ['error' => 'Book already exists']
+            );
+            return;
+
+        }
+
         header('HTTP/2 301 Moved Permanently');
         header('Location: index.php');
     }

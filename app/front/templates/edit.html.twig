@@ -45,8 +45,7 @@
         </div>
         <div>
             <label>
-                <input value="{{ book.finished_at ? book.finished_at|date('Y-m-d') : '' }}" type="date" name="date"
-                       placeholder="date"/>
+                <input value="{{ book.finished_at ? book.finished_at|date('Y-m-d') : '' }}" type="date" name="finished_at" placeholder="date"/>
             </label>
         </div>
         <div>
@@ -56,6 +55,13 @@
         </div>
         <div>
             <button type="submit">OK</button>
+        </div>
+        <div>
+            <br>
+            <label>
+                Abandonned
+                <input type="checkbox" name="abandonned_at" value="1" {{ book.abandonned_at ? 'checked' : '' }}/>
+            </label>
         </div>
         <div>
             <button class="delete"><a href="?action=delete&slug={{ book.slug }}">Delete</a></button>

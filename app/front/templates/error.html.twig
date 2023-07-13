@@ -1,13 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block nav %}
-    <div><a href="../index.php">&lt;&lt; back </a></div>
-{% endblock %}
-
 {% block body %}
-    <h1>There was an error:</h1>
+    <h1>There was an error :'(</h1>
     <p>
-    {{ error.message }}
+    {{ error }}
     </p>
-    <p>in {{ error.file }}:{{ error.line }}</p>
 {% endblock%}

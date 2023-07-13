@@ -21,7 +21,7 @@
                 {% if filter.note is defined %} <a href="?action=list">×</a> {% endif %}
             </td>
             <td class="finished">
-                finished date
+                finished on
             </td>
         </tr>
 
@@ -30,7 +30,7 @@
         {% endif %}
 
         {% for book in books %}
-            <tr class="{{ book.finished_at ? 'done' : 'reading' }}">
+            <tr class="{{ book.finished_at ? 'done' : (book.abandonned_at ? 'abandonned' : 'reading') }}">
                 <td>
                     <a href="?slug={{ book.slug }}&action={{ authenticated ? 'edit' : 'show' }}"
                        class="list__book-title"><strong>{{ book.title }}</strong></a>
@@ -52,7 +52,11 @@
                         <span class="badge note_{{ book.note_id }}">{{ book.note }}</span>
                     </a>
                 </td>
-                <td>{{ book.finished_at ? book.finished_at|date('Y⋅m⋅d') : 'currently reading' }}</td>
+                <td>
+                    {{ book.finished_at
+                    ? book.finished_at|date('Y⋅m⋅d')
+                    :  (book.abandonned_at ? 'abandonned' : 'currently reading')
+                    }}</td>
             </tr>
         {% endfor %}
     </table>

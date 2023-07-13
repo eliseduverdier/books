@@ -4,7 +4,7 @@
     <a href="..">&lt;&lt; back </a>
 {% endblock %}
 
-{% block title %}📖 Login{% endblock %}
+{% block title %}🤷 Login{% endblock %}
 
 {% block body %}
     <form method="POST" name="?action=login" id="login">
@@ -16,10 +16,29 @@
         <div>
             <label>
                 <input value="" type="password" name="password" placeholder="password" />
+            <span class="see-password">(see)</span>
             </label>
         </div>
         <div>
             <button type="submit">OK</button>
         </div>
     </form>
+
+
+<script>
+        document.querySelector('.see-password').addEventListener('click', function() {
+            var password = document.querySelector('input[name="password"]');
+            if (password.getAttribute('type') === 'password') {
+                password.setAttribute('type', 'text');
+            } else {
+                password.setAttribute('type', 'password');
+            }
+        });
+</script>
+
+{% endblock %}
+
+{% block styles %}
+    {{ parent() }}
+    {% include 'styles/login.css' %}
 {% endblock %}
