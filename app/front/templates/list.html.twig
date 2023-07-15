@@ -3,62 +3,58 @@
 {% block title %}List of read books 📚{% endblock %}
 
 {% block body %}
-    <table>
-        <tr>
-            <td class="title">
+    <ul class="books-list">
+        <li class="books-list__item books-list__title">
+            <div class="title-item">
                 title
-            </td>
-            <td class="author">
+            </div>
+            <div class="author-item">
                 author
                 {% if filter.author is defined %} <a href="?action=list">×</a> {% endif %}
-            </td>
-            <td class="type">
+            </div>
+            <div class="type-item">
                 type
                 {% if filter.type is defined %} <a href="?action=list">×</a> {% endif %}
-            </td>
-            <td class="note">
+            </div>
+            <div class="note-item">
                 note
                 {% if filter.note is defined %} <a href="?action=list">×</a> {% endif %}
-            </td>
-            <td class="finished">
-                finished on
-            </td>
-        </tr>
+            </div>
+            <div class="finished-at-item">
+                finished
+            </div>
+        </li>
 
         {% if authenticated %}
             {% include 'new.html.twig' %}
         {% endif %}
 
         {% for book in books %}
-            <tr class="{{ book.finished_at ? 'done' : (book.abandonned_at ? 'abandonned' : 'reading') }}">
-                <td>
+            <li class="books-list__item {{ book.finished_at ? 'done' : (book.abandonned_at ? 'abandonned' : 'reading') }}">
+                <div class="title-item">
                     <a href="?slug={{ book.slug }}&action={{ authenticated ? 'edit' : 'show' }}"
                        class="list__book-title"><strong>{{ book.title }}</strong></a>
-                </td>
-
-                <td>
+                </div>
+                <div class="author-item">
                     <a href="?filter[author]={{ book.author }}" class="list__filter-link list__authors-name">
                         <strong>{{ book.author_name ?? book.author }}</strong>
                     </a>
-                </td>
-
-                <td>
+                </div>
+                <div class="type-item">
                     <a href="?filter[type]={{ book.type }}" class="list__filter-link">
                         <span class="badge {{ book.type }}">{{ book.type }}</span>
                     </a>
-                </td>
-                <td>
+                </div>
+                <div class="note-item">
                     <a href="?filter[note]={{ book.note_id }}" class="list__filter-link">
                         <span class="badge note_{{ book.note_id }}">{{ book.note }}</span>
                     </a>
-                </td>
-                <td>
+                </div>
+                <div class="finished-at-item">
                     {{ book.finished_at
                     ? book.finished_at|date('Y⋅m⋅d')
-                    :  (book.abandonned_at ? 'abandonned' : 'currently reading')
-                    }}</td>
-            </tr>
+                    :  (book.abandonned_at ? 'abandonned' : 'currently reading') }}</div>
+            </li>
         {% endfor %}
-    </table>
-
+    </ul>
 {% endblock %}

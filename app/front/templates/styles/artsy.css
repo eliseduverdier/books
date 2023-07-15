@@ -1,0 +1,23 @@
+#artsy-bg-1, #artsy-bg-2, #artsy-bg-3,
+#artsy-bg-4, #artsy-bg-5, #artsy-bg-6,
+#artsy-bg-7, #artsy-bg-8, #artsy-bg-9 {
+    width: 150%;
+    height: 2px;
+    z-index: -1;
+    background: var(--fun-color);
+    box-shadow: 0 12px var(--fg-color);
+    opacity: .5;
+    position: absolute;
+    left: -50px;
+    /*filter: blur(1px);*/
+}
+
+#artsy-bg-1 {top: 100px;rotate: 7deg;}
+#artsy-bg-2 {top: 110px;rotate: 8deg;}
+#artsy-bg-3 {top: 120px;rotate: 10deg}
+#artsy-bg-4 {top: 130px;rotate: 13deg}
+#artsy-bg-5 {top: 140px;rotate: 17deg}
+#artsy-bg-6 {top: 150px;rotate: 22deg}
+#artsy-bg-7 {top: 160px;rotate: 28deg}
+#artsy-bg-8 {top: 170px;rotate: 35deg}
+#artsy-bg-9 {top: 180px;rotate: 43deg}

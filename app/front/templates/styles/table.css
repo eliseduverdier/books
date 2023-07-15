@@ -1,39 +1,70 @@
 /*
  *  LIST
  */
-table {
-    border-collapse: collapse;
-    width: 100%;
+ul {
+    width: 120vw;
+    max-width: 1260px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-tr {
+li {
     padding: 5px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px dotted #aaa;
+    width: 100%;
+    white-space: nowrap;
 }
 
-td {
-    padding: 10px;
+li.books-list__title div {
+    font-weight: bolder;
+    color: var(--bg-color);
+    background-color: var(--fg-color);
+    border-radius: 3px;
+    text-align: center;
+    white-space: nowrap !important;
+    margin:0;
 }
 
-tr.reading {
+li div {
+    display: inline-block;
+    padding: 5px;
+    margin:0;
+
+}
+
+li.books-list__item div {
+    white-space: normal;
+}
+
+li.books-list__item.reading {
     opacity: .5;
 }
-tr.abandonned {
-    text-decoration: line-through;
+
+li.books-list__item.abandonned {
     opacity: .7;
 }
-td.title {
-    width: 40%;
+
+li.books-list__item.abandonned div {
+    text-decoration: line-through;
 }
-td.author {
+
+li.books-list__item div.title-item {
+    width: 34%;
+}
+
+li.books-list__item div.author-item {
     width: 25%;
 }
-td.type {
+
+li.books-list__item div.type-item {
     width: 10%;
 }
-td.note {
+
+li.books-list__item div.note-item {
     width: 10%;
 }
-td.finished {
+
+li.books-list__item div.finished-at-item {
     width: 15%;
 }

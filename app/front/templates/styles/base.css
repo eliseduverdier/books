@@ -2,12 +2,14 @@
     --bg-color: #fff;
     --fg-color: #04c062;
     --link-color: black;
+    --fun-color: #C3FF0D;
 }
 
 [data-theme="dark"] {
     --bg-color: #222;
     --fg-color: #A9F6CF;
     --link-color: white;
+    --fun-color: #BBE741;
 }
 
 html {
@@ -54,4 +56,13 @@ a.list__filter-link {
 
 #auth {
     float: right;
+}
+
+h1 {
+    text-shadow:
+             4px  4px 0 var(--bg-color),
+            -4px -4px 0 var(--bg-color),
+             4px -4px 0 var(--bg-color),
+            -4px  4px 0 var(--bg-color)
+;
 }

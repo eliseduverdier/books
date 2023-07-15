@@ -36,14 +36,15 @@ class MysqlDriver
     public function selectAll(string $fields = '*', array $filter = []): array
     {
         $stmt = $this->connection->prepare("
-SELECT books.slug, title, a.name AS author_name, author, type_id AS type, n.note AS note, n.id AS note_id, finished_at, abandonned_at
+SELECT books.slug, title, finished_at, abandonned_at, type_id AS type,
+       a.name AS author_name, author,
+       n.note AS note, n.id AS note_id
 FROM {$this->tableName} 
     LEFT JOIN books_notes n ON n.id = books.note_id
-    LEFT JOIN books_author a ON a.slug = books.author " .
-            (empty($filter) ? '' : $this->buildWhereClause($filter))
-            . " ORDER BY abandonned_at ASC, finished_at IS NULL DESC, finished_at DESC ;"
-
-
+    LEFT JOIN books_author a ON a.slug = books.author 
+    WHERE deleted_at IS NULL" .
+            (empty($filter) ? '' : ' AND ' . $this->buildWhereClause($filter))
+            . "\n ORDER BY abandonned_at ASC, finished_at IS NULL DESC, finished_at DESC ;"
         );
         $this->bindWhereClause($filter, $stmt);
         $stmt->execute();
@@ -129,7 +130,7 @@ WHERE $field = ?;
 
     public function delete(string $slug): bool
     {
-        $stmt = $this->connection->prepare("DELETE FROM {$this->tableName} WHERE slug = ?;");
+        $stmt = $this->connection->prepare("UPDATE {$this->tableName} SET deleted_at = CURRENT_DATE WHERE slug = ?;");
         $stmt->bind_param('s', $slug);
         return $stmt->execute();
     }
@@ -174,7 +175,7 @@ WHERE $field = ?;
             $field = self::WHERE_MAPPING[$k] ?? $k;
             $whereClause[] = "$field = ?";
         }
-        return "\nWHERE " . implode(' AND ', $whereClause);
+        return implode("\n AND ", $whereClause);
     }
 
     protected function bindWhereClause(array $filter, \mysqli_stmt $stmt): void

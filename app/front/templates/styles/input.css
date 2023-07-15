@@ -16,7 +16,7 @@ input[type=text], input[type=password], select, textarea {
 }
 
 input, select, textarea {
-    background: none;
+    background: var(--bg-color);
     color: var(--fg-color);
 }
 
