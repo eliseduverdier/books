@@ -11,6 +11,8 @@ require dirname(__DIR__) . '/books/app/src/Debug/util.php';
 
 $action = $_GET['action'] ?? null;
 $slug = $_GET['slug'] ?? null;
+$filter = $_GET['filter'] ?? [];
+$sort = $_GET['sort'] ?? [];
 // Working only on localhost, sadly
 //if (preg_match('~^/([a-z_]+)/([a-z]+)$~', $_SERVER['REQUEST_URI'], $m)) {
 //    $slug = $m[1];
@@ -39,7 +41,7 @@ if ($authenticated) {
             break;
         default:
             if ($_POST) (new BookApp())->saveNew($_POST);
-            (new BookApp())->list(true, $_GET['filter'] ?? []);
+            (new BookApp())->list(true, $filter, $sort);
             break;
     }
 }
@@ -54,7 +56,7 @@ if (!$authenticated) {
             (new BookApp())->show($slug);
             break;
         default:
-            (new BookApp())->list(false, $_GET['filter'] ?? []);
+            (new BookApp())->list(false, $filter, $sort);
             break;
     }
 }

@@ -38,9 +38,9 @@ class BooksData
         $this->types = $this->dataManager->getTypes();
     }
 
-    public function getBooks(array $filter): array
+    public function getBooks(array $filter, array $sort): array
     {
-        return $this->dataManager->getAll($filter);
+        return $this->dataManager->getAll($filter, $sort);
     }
 
     public function getBook(string $slug): array

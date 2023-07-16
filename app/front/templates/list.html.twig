@@ -11,6 +11,11 @@
             <div class="author-item">
                 author
                 {% if filter.author is defined %} <a href="?action=list">×</a> {% endif %}
+                {% if sort is defined and sort[0] == 'author' %}
+                    <a href="?action=list">×</a>
+                {% else %}
+                    <a href="?sort[]=author">▼</a>
+                {% endif %}
             </div>
             <div class="type-item">
                 type
@@ -19,6 +24,9 @@
             <div class="note-item">
                 note
                 {% if filter.note is defined %} <a href="?action=list">×</a> {% endif %}
+                {% if sort is defined and sort[0] == 'note'%} <a href="?action=list">×</a>
+                {% else %} <a href="?sort[]=note">▼</a>
+                {% endif %}
             </div>
             <div class="finished-at-item">
                 finished
@@ -36,7 +44,7 @@
                        class="list__book-title"><strong>{{ book.title }}</strong></a>
                 </div>
                 <div class="author-item">
-                    <a href="?filter[author]={{ book.author }}" class="list__filter-link list__authors-name">
+                    <a href="?filter[author]={{ book.author }}" class="list__filter-link">
                         <strong>{{ book.author_name ?? book.author }}</strong>
                     </a>
                 </div>

@@ -4,6 +4,9 @@ namespace App\Data;
 
 use App\Util;
 
+/**
+ * TODO: refactor this class by CRUD + raw
+ */
 class MysqlDriver
 {
     protected int|\mysqli $connection = 0;
@@ -12,10 +15,18 @@ class MysqlDriver
         'note' => 'note_id',
         'type' => 'type_id',
     ];
+    private const SORT_MAPPING = [
+        'author' => 'LOWER(author)',
+        'note' => 'note_id',
+    ];
+    private const SORT_MAPPING_ORDER = [
+        'author' => 'ASC',
+        'note' => 'DESC',
+    ];
 
     public function __construct(protected string $tableName = '')
     {
-        // TODO find a better way to handle this
+        // TODO find a cleaner way to handle this
         if (empty($_SERVER['SERVER_NAME']) || $_SERVER['SERVER_NAME'] === 'localhost') {
             require __DIR__ . '/../../.env.dist.php';
         } else {
@@ -33,19 +44,22 @@ class MysqlDriver
         mysqli_set_charset($this->connection, 'utf8');
     }
 
-    public function selectAll(string $fields = '*', array $filter = []): array
+    public function selectAll(string $fields = '*', array $filter = [], array $sort = []): array
     {
-        $stmt = $this->connection->prepare("
+        $query = "
 SELECT books.slug, title, finished_at, abandonned_at, type_id AS type,
        a.name AS author_name, author,
        n.note AS note, n.id AS note_id
 FROM {$this->tableName} 
     LEFT JOIN books_notes n ON n.id = books.note_id
     LEFT JOIN books_author a ON a.slug = books.author 
-    WHERE deleted_at IS NULL" .
-            (empty($filter) ? '' : ' AND ' . $this->buildWhereClause($filter))
-            . "\n ORDER BY abandonned_at ASC, finished_at IS NULL DESC, finished_at DESC ;"
-        );
+    WHERE deleted_at IS NULL"
+            . (empty($filter) ? '' : ' AND ' . $this->buildWhereClause($filter))
+    . "\nORDER BY\n"
+            . (empty($sort) ? 'abandonned_at ASC, finished_at IS NULL DESC, finished_at DESC' : $this->buildSortClause($sort))
+            .';';
+
+        $stmt = $this->connection->prepare($query);
         $this->bindWhereClause($filter, $stmt);
         $stmt->execute();
 
@@ -63,8 +77,7 @@ FROM books
     LEFT JOIN books_notes n ON n.id = books.note_id 
     LEFT JOIN books_author a ON a.slug = books.author
 WHERE $field = ?;
-"
-        );
+");
         $stmt->bind_param('s', array_values($by)[0]);
         $stmt->execute();
 
@@ -194,5 +207,17 @@ WHERE $field = ?;
         }
 
         return false;
+    }
+
+    // TODO you know
+    private function buildSortClause(array $sort): string
+    {
+        $sortClause = [];
+        foreach ($sort as $k => $v) {
+            $field = self::SORT_MAPPING[$v];
+            $sortClause[] = "$field " . self::SORT_MAPPING_ORDER[$v];
+        }
+        return implode(', ', $sortClause);
+
     }
 }

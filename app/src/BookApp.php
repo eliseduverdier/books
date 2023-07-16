@@ -15,15 +15,20 @@ class BookApp
     {
         $this->twig = (new Environment(
             new FilesystemLoader(__DIR__ . '/../front/templates/'),
+            [
+                'debug' => true,
+            ]
+
         ));
+        $this->twig->addExtension(new \Twig\Extension\DebugExtension());
         $this->booksData = new \App\BooksData();
     }
 
-    public function list(bool $authenticated = false, array $filter = []): void
+    public function list(bool $authenticated = false, array $filter = [], array $sort = []): void
     {
         $this->display(
             'list.html.twig',
-            ['books' => $this->booksData->getBooks($filter), 'filter'=> $filter],
+            ['books' => $this->booksData->getBooks($filter, $sort), 'filter' => $filter, 'sort' => $sort],
             $authenticated
         );
     }
@@ -39,7 +44,7 @@ class BookApp
 
     public function saveNew(array $data): void
     {
-        if(!$this->booksData->save($data)) { // will return false if book already exists
+        if (!$this->booksData->save($data)) { // will return false if book already exists
             $this->twig->display(
                 'error.html.twig',
                 ['error' => 'Book already exists']

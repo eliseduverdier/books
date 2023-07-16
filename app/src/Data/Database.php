@@ -14,9 +14,9 @@ class Database implements DataInterface
         $this->driver = new MysqlDriver('books');
     }
 
-    public function getAll(array $filter = []): array
+    public function getAll(array $filter, array $sort): array
     {
-        return $this->driver->selectAll(filter: $filter);
+        return $this->driver->selectAll(filter: $filter, sort: $sort);
     }
 
     public function getOne(string $slug): array
