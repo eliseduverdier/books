@@ -44,12 +44,12 @@ class MysqlDriver
         mysqli_set_charset($this->connection, 'utf8');
     }
 
-    public function selectAll(string $fields = '*', array $filter = [], array $sort = []): array
+    public function selectAllBooks(string $fields = '*', array $filter = [], array $sort = []): array
     {
         $query = "
 SELECT books.slug, title, finished_at, abandonned_at, type_id AS type,
        a.name AS author_name, author,
-       n.note AS note, n.id AS note_id
+       n.note AS note, n.id AS note_id, n.legend as note_legend
 FROM {$this->tableName} 
     LEFT JOIN books_notes n ON n.id = books.note_id
     LEFT JOIN books_author a ON a.slug = books.author 

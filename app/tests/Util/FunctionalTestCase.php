@@ -6,7 +6,17 @@ use App\Data\MysqlDriver;
 
 class FunctionalTestCase
 {
-    private MysqlDriver $driver;
+    private \mysqli $mysql;
+
+    public const DB_HOST = "localhost";
+    public const DB_USER = "elise";
+    public const DB_PASSWORD = "";
+    public const DB_NAME = "books_tests";
+
+    public function __construct()
+    {
+        $this->mysql = mysqli_connect(self::DB_HOST, self::DB_USER, self::DB_PASSWORD, self::DB_NAME);
+    }
 
     public function setUp(): void
     {
@@ -17,11 +27,9 @@ class FunctionalTestCase
     {
         echo " >>>> Setting up database...\n";
         // create database, tables, and insert sample data
-        $this->driver = new MysqlDriver('books_test');
-        $this->driver->rawQuery("CREATE DATABASE IF NOT EXISTS `books_test`;  ");
-        $this->driver->rawQuery("USE `books_test`;");
-
-        $this->driver->rawQuery(file_get_contents(__DIR__ . '/../../../data/data-structure.sql'));
+        mysqli_query($this->mysql, "DROP TABLE IF EXISTS `books_test`;");
+        mysqli_query($this->mysql, file_get_contents(__DIR__ . '/../../data/data-structure.sql'));
+        mysqli_query($this->mysql, file_get_contents(__DIR__ . '/../../data/data-tests.sql'));
     }
 
     public function crawl(string $url, string $method = 'GET', array $options = []): string
@@ -37,7 +45,7 @@ class FunctionalTestCase
 
     public function tearDown(): void
     {
-        // delete database
-        $this->driver->rawQuery('DROP TABLE IF EXISTS books_test');
+        // delete tables
+        mysqli_query($this->mysql, "DROP TABLE IF EXISTS `books_test` ;");
     }
 }

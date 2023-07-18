@@ -27,7 +27,6 @@ class BooksData
     ];
 
     protected Database $dataManager;
-    protected array $booksData;
     protected array $notes;
     protected array $types;
 
@@ -41,6 +40,10 @@ class BooksData
     public function getBooks(array $filter, array $sort): array
     {
         return $this->dataManager->getAll($filter, $sort);
+    }
+    public function getNotes(): array
+    {
+        return $this->dataManager->getNotes();
     }
 
     public function getBook(string $slug): array

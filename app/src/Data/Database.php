@@ -16,7 +16,7 @@ class Database implements DataInterface
 
     public function getAll(array $filter, array $sort): array
     {
-        return $this->driver->selectAll(filter: $filter, sort: $sort);
+        return $this->driver->selectAllBooks(filter: $filter, sort: $sort);
     }
 
     public function getOne(string $slug): array
@@ -63,4 +63,5 @@ class Database implements DataInterface
     {
         return $this->driver->selectFromTable('books_types');
     }
+
 }

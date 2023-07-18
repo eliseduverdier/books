@@ -34,11 +34,13 @@
             <label>
                 <select name="note">
                     <option value="">
-                            —Note—
+                        —Note—
                     </option>
-                    {% for key, note in notes %}
-                        <option value="{{ key }}" {{ book.note_id is not null and book.note_id == key ? 'selected' : '' }}
-                                autocomplete="off">{{ key }} - {{ note }} </option>
+                    {% for note in notes %}
+                        <option value="{{ note.id }}" {{ book.note_id is not null and book.note_id == key ? 'selected' : '' }}
+                                autocomplete="off">
+                            {{ note.note }} ({{ note.legend }})
+                        </option>
                     {% endfor %}
                 </select>
             </label>

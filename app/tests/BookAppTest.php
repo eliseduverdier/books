@@ -14,12 +14,11 @@ class BookAppTest extends FunctionalTestCase
     public function testList(): void
     {
         $output = $this->crawl('/');
-        dump($output);
     }
 
     public function testSee(): void
     {
-        $output = $this->crawl('/');
+        $output = $this->crawl('/?slug=vvv_vvv');
     }
 
     public function testCreate(): void
@@ -29,7 +28,7 @@ class BookAppTest extends FunctionalTestCase
 
     public function testEdit(): void
     {
-        $output = $this->crawl('/?action=edit&slug=book', 'GET');
+        $output = $this->crawl('/?action=edit&slug=vvv_vvv', 'GET');
 
 
         $output = $this->crawl('/?action=edit', 'POST');
