@@ -5,6 +5,8 @@
     --tags__poetry: #05BFDB;
     --tags__biography: #8EAC50;
     --tags__art: #d2ad12;
+    --tags__BD: #D6770A;
+    --tags__theater: #93078E;
 }
 
 [data-theme="dark"] {
@@ -14,9 +16,11 @@
     --tags__poetry: #0bdbe0;
     --tags__biography: #a3b76d;
     --tags__art: #e0c12b;
+    --tags__BD: #FA8B0C;
+    --tags__theater: #D355CB;
 }
 
-.essay, .novel, .poetry, .biography, .art {
+.essay, .novel, .poetry, .biography, .art, .BD, .theater {
     color: var(--tags__text);
 }
 
@@ -25,3 +29,5 @@
 .poetry { background-color: var(--tags__poetry); }
 .biography { background-color: var(--tags__biography); }
 .art { background-color: var(--tags__art); }
+.BD { background-color: var(--tags__BD); }
+.theater { background-color: var(--tags__theater); }

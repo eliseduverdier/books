@@ -20,8 +20,10 @@
     <p>
         Finished at: <strong>{{ book.finished_at ? book.finished_at|date('Y⋅m⋅d') : 'currently reading' }}</strong>
     </p>
+    {% if not book.private_summary %}
         <hr>
-    <p id="summary">
-       {{ book.summary|replace({'\n': '<br>'})|raw }}
-    </p>
+        <p id="summary">
+            {{ book.summary|replace({'\n': '<br>'})|raw }}
+        </p>
+    {% endif %}
 {% endblock %}

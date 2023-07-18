@@ -26,7 +26,10 @@
 .note_4 {background-color: var(--notes__note_4)}
 .note_5 {background-color: var(--notes__note_5)}
 .note_6 {background-color: var(--notes__note_6)}
+
 .note_7 {
-    box-shadow: 0 0 10px var(--notes__note_6), 0 0 5px var(--notes__note_6), 0 0 5px var(--notes__note_6);
-    background-color: var(--notes__note_7)
+    box-shadow: 0 0 10px var(--notes__note_6),
+                0 0  5px var(--notes__note_6),
+                0 0  5px var(--notes__note_6);
+    background-color: var(--notes__note_7);
 }

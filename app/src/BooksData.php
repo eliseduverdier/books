@@ -7,6 +7,7 @@ use App\Data\Database;
 
 class BooksData
 {
+    // todo that should not be there
     public const TYPES =
     [
         'essay',

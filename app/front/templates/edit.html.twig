@@ -8,6 +8,9 @@
 {% block title %}📖 {{ book.title }}{% endblock %}
 
 {% block body %}
+
+{# Keep there for debug {{ dump(book|json_encode(constant('JSON_PRETTY_PRINT'))) }}#}
+
     <form method="POST" name="?action=edit&slug={{ book.slug }}" id="edit">
         <div>
             <label>
@@ -59,10 +62,21 @@
             <button type="submit">OK</button>
         </div>
         <div>
-            <br>
             <label>
                 Abandonned
                 <input type="checkbox" name="abandonned_at" value="1" {{ book.abandonned_at ? 'checked' : '' }}/>
+            </label>
+        </div>
+        <div>
+            <label>
+                Private book
+                <input type="checkbox" name="private_book" value="1" {{ book.private_book ? 'checked' : '' }}/>
+            </label>
+        </div>
+        <div>
+            <label>
+                Private summary
+                <input type="checkbox" name="private_summary" value="1" {{ book.private_summary ? 'checked' : '' }}/>
             </label>
         </div>
         <div>
