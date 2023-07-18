@@ -1,6 +1,7 @@
 :root {
     --notes__text: white;
     --notes__note_4: #EA6BE0;
+    --notes__note_7: #FFE100;
     --notes__note_6: #ffc821;
     --notes__note_5: #c5c13c;
     --notes__note_3: #97b355;
@@ -13,7 +14,7 @@
     --notes__text: black;
 }
 
-.note_0, .note_1, .note_2, .note_3, .note_4, .note_5, .note_6 {
+.note_0, .note_1, .note_2, .note_3, .note_4, .note_5, .note_6, .note_7 {
     color: var(--notes__text);
 }
 
@@ -24,3 +25,10 @@
 .note_4 {background-color: var(--notes__note_4)}
 .note_5 {background-color: var(--notes__note_5)}
 .note_6 {background-color: var(--notes__note_6)}
+
+.note_7 {
+    box-shadow: 0 0 10px var(--notes__note_6),
+                0 0  5px var(--notes__note_6),
+                0 0  5px var(--notes__note_6);
+    background-color: var(--notes__note_7);
+}

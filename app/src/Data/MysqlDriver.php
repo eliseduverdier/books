@@ -47,17 +47,17 @@ class MysqlDriver
     public function selectAll(string $fields = '*', array $filter = [], array $sort = []): array
     {
         $query = "
-SELECT books.slug, title, finished_at, abandonned_at, type_id AS type,
-       a.name AS author_name, author,
-       n.note AS note, n.id AS note_id
+SELECT *, books.slug AS slug, books.note_id AS note_id, books.type_id AS type,
+       a.name AS author_name,
+       n.note AS note, n.legend AS note_legend
 FROM {$this->tableName} 
     LEFT JOIN books_notes n ON n.id = books.note_id
-    LEFT JOIN books_author a ON a.slug = books.author 
+    LEFT JOIN books_author a ON a.slug = books.author
     WHERE deleted_at IS NULL"
             . (empty($filter) ? '' : ' AND ' . $this->buildWhereClause($filter))
-    . "\nORDER BY\n"
+            . "\nORDER BY\n"
             . (empty($sort) ? 'abandonned_at ASC, finished_at IS NULL DESC, finished_at DESC' : $this->buildSortClause($sort))
-            .';';
+            . ';';
 
         $stmt = $this->connection->prepare($query);
         $this->bindWhereClause($filter, $stmt);
@@ -72,9 +72,12 @@ FROM {$this->tableName}
         $field = array_keys($by)[0];
         $stmt = $this->connection->prepare(
             "
-SELECT books.slug, title, summary, author, a.name AS author_name, type_id AS type, n.note AS note, n.id AS note_id, finished_at, abandonned_at
+SELECT books.*, books.slug AS slug,
+       a.name AS author_name,
+       n.note AS note,
+       n.id AS note_id
 FROM books
-    LEFT JOIN books_notes n ON n.id = books.note_id 
+    LEFT JOIN books_notes n ON n.id = books.note_id
     LEFT JOIN books_author a ON a.slug = books.author
 WHERE $field = ?;
 ");

@@ -41,6 +41,8 @@
             {% if (authenticated or not book.private_book) %}
 
             <li class="books-list__item {{ book.finished_at ? 'done' : (book.abandonned_at ? 'abandonned' : 'reading') }}">
+{#                 <!--Keep there for debug--> {{ dump(book|json_encode(constant('JSON_PRETTY_PRINT'))) }}#}
+
                 <div class="title-item">
                     <a href="?slug={{ book.slug }}&action={{ authenticated ? 'edit' : 'show' }}"
                        class="list__book-title"><strong>{{ book.title }}</strong></a>
@@ -57,7 +59,7 @@
                 </div>
                 <div class="note-item">
                     <a href="?filter[note]={{ book.note_id }}" class="list__filter-link">
-                        <span class="badge note_{{ book.note_id }}">{{ book.note }}</span>
+                        <span class="badge note_{{ book.note_id }}" title="{{ book.note_legend }}">{{ book.note }}</span>
                     </a>
                 </div>
                 <div class="finished-at-item">

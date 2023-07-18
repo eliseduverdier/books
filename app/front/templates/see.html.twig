@@ -25,7 +25,5 @@
         <p id="summary">
             {{ book.summary|replace({'\n': '<br>'})|raw }}
         </p>
-    {% else %}
-        <em>private summary</em>
     {% endif %}
 {% endblock %}
