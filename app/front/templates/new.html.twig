@@ -16,7 +16,7 @@
                     <select name="type">
                         <option value="">—Type—</option>
                         {% for type in types %}
-                            <option value="{{ type }}"> {{ type }} </option>
+                            <option value="{{ type.name }}"> {{ type.name }} </option>
                         {% endfor %}
                     </select>
                 </label>

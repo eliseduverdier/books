@@ -7,26 +7,6 @@ use App\Data\Database;
 
 class BooksData
 {
-    // todo that should not be there
-    public const TYPES =
-    [
-        'essay',
-        'novel',
-        'biography',
-        'art',
-        'BD',
-    ];
-
-    public const NOTES = [
-        '6' => '★★★★★', // (extraordinary)
-        '5' => '★★★★', // (great)
-        '3' => '★★★', // (good)
-        '2' => '★★', // (nice)
-        '1' => '★', // (mh)
-        '0' => '☆', // (nope)
-        '4' => '♡', // (adorable)
-    ];
-
     protected Database $dataManager;
     protected array $notes;
     protected array $types;
@@ -42,9 +22,15 @@ class BooksData
     {
         return $this->dataManager->getAll($filter, $sort);
     }
+
     public function getNotes(): array
     {
         return $this->dataManager->getNotes();
+    }
+
+    public function getTypes(): array
+    {
+        return $this->dataManager->getTypes();
     }
 
     public function getBook(string $slug): array

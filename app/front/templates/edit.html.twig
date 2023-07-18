@@ -9,7 +9,7 @@
 
 {% block body %}
 
-{# Keep there for debug {{ dump(book|json_encode(constant('JSON_PRETTY_PRINT'))) }}#}
+    {# Keep there for debug {{ dump(book|json_encode(constant('JSON_PRETTY_PRINT'))) }} #}
 
     <form method="POST" name="?action=edit&slug={{ book.slug }}" id="edit">
         <div>
@@ -27,8 +27,8 @@
                 <select name="type">
                     <option value="">—Type—</option>
                     {% for type in types %}
-                        <option value="{{ type }}" {{ book.type == type ? 'selected' : '' }}
-                                autocomplete="off"> {{ type }} </option>
+                        <option value="{{ type.name }}" {{ book.type_id == type.name ? 'selected="true"' : '' }}
+                                autocomplete="off"> {{ type.name }} </option>
                     {% endfor %}
                 </select>
             </label>
@@ -39,8 +39,8 @@
                     <option value="">
                         —Note—
                     </option>
-                    {% for note in notes %}
-                        <option value="{{ note.id }}" {{ book.note_id is not null and book.note_id == key ? 'selected' : '' }}
+                    {% for key, note in notes %}
+                        <option value="{{ note.id }}" {{ book.note_id is not null and book.note_id == note.id ? 'selected="true"' : '' }}
                                 autocomplete="off">
                             {{ note.note }} ({{ note.legend }})
                         </option>
@@ -50,7 +50,8 @@
         </div>
         <div>
             <label>
-                <input value="{{ book.finished_at ? book.finished_at|date('Y-m-d') : '' }}" type="date" name="finished_at" placeholder="date"/>
+                <input value="{{ book.finished_at ? book.finished_at|date('Y-m-d') : '' }}" type="date"
+                       name="finished_at" placeholder="date"/>
             </label>
         </div>
         <div>

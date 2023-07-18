@@ -110,8 +110,8 @@ class BookApp
             $template,
             array_merge($data,
                 [
-                    'types' => BooksData::TYPES,
-                    'notes' => $this->booksData->getNotes(), // BooksData::NOTES,
+                    'types' => $this->booksData->getTypes(),
+                    'notes' => $this->booksData->getNotes(),
                     'authenticated' => $authenticated,
                 ])
         );
