@@ -46,6 +46,8 @@ class Database implements DataInterface
             'summary' => $data['summary'],
             'finished_at' => empty($data['finished_at']) ? null : $data['finished_at'],
             'abandonned_at' => $data['abandonned_at'] ? date('Y-m-d') : null,
+            'private_book' => $data['private_book'],
+            'private_summary' => $data['private_summary'],
         ]);
     }
 

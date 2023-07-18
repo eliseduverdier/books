@@ -38,6 +38,8 @@
         {% endif %}
 
         {% for book in books %}
+            {% if (authenticated or not book.private_book) %}
+
             <li class="books-list__item {{ book.finished_at ? 'done' : (book.abandonned_at ? 'abandonned' : 'reading') }}">
                 <div class="title-item">
                     <a href="?slug={{ book.slug }}&action={{ authenticated ? 'edit' : 'show' }}"
@@ -63,6 +65,8 @@
                     ? book.finished_at|date('Y⋅m⋅d')
                     :  (book.abandonned_at ? 'abandonned' : 'currently reading') }}</div>
             </li>
+
+        {% endif %}
         {% endfor %}
     </ul>
 {% endblock %}

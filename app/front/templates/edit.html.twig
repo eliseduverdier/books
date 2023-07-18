@@ -57,10 +57,21 @@
             <button type="submit">OK</button>
         </div>
         <div>
-            <br>
             <label>
                 Abandonned
                 <input type="checkbox" name="abandonned_at" value="1" {{ book.abandonned_at ? 'checked' : '' }}/>
+            </label>
+        </div>
+        <div>
+            <label>
+                Private book
+                <input type="checkbox" name="private_book" value="1" {{ book.private_book ? 'checked' : '' }}/>
+            </label>
+        </div>
+        <div>
+            <label>
+                Private description
+                <input type="checkbox" name="private_summary" value="1" {{ book.private_summary ? 'checked' : '' }}/>
             </label>
         </div>
         <div>

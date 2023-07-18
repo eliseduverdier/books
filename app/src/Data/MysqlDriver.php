@@ -128,7 +128,7 @@ WHERE $field = ?;
         foreach ($data as $k => $v) {
             $assignations[] = "$k = ?";
         }
-        // todo edit author
+        // todo edit author ?
         $assignations = implode(', ', $assignations);
         $stmt = $this->connection->prepare("UPDATE {$this->tableName} SET $assignations WHERE slug = ?;");
         $params = array_merge($data, [$slug]);
