@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}List of read books 📚{% endblock %}
+{%- block title -%}List of read books 📚{%- endblock -%}
 
 {% block body %}
     <ul class="books-list">
@@ -40,12 +40,21 @@
         {% for book in books %}
             {% if (authenticated or not book.private_book) %}
 
-            <li class="books-list__item {{ book.finished_at ? 'done' : (book.abandonned_at ? 'abandonned' : 'reading') }}">
+            <li
+                    id="{{ book.slug }}"
+                    class="books-list__item
+                    {{ book.finished_at ? 'done' : (book.abandonned_at ? 'abandonned' : 'reading') }}
+                    {{ active == book.slug ? 'active' : '' }}
+            ">
 {#                 <!--Keep there for debug--> {{ dump(book|json_encode(constant('JSON_PRETTY_PRINT'))) }}#}
 
                 <div class="title-item">
-                    {% if book.private_book %}
-                        🔒
+                    {% if authenticated %}
+                        {% if book.private_book %}
+                            🔑
+                        {% elseif book.private_summary %}
+                            🗝
+                        {% endif %}
                     {% endif %}
                     <a href="?slug={{ book.slug }}&action={{ authenticated ? 'edit' : 'show' }}"
                        class="list__book-title"><strong>{{ book.title }}</strong></a>
@@ -68,7 +77,7 @@
                 <div class="finished-at-item">
                     {{ book.finished_at
                     ? book.finished_at|date('Y⋅m⋅d')
-                    :  (book.abandonned_at ? 'abandonned' : 'currently reading') }}</div>
+                    : (book.abandonned_at ? 'abandonned' : 'currently reading') }}</div>
             </li>
 
         {% endif %}

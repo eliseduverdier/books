@@ -28,7 +28,12 @@ class BookApp
     {
         $this->display(
             'list.html.twig',
-            ['books' => $this->booksData->getBooks($filter, $sort), 'filter' => $filter, 'sort' => $sort],
+            [
+                'books' => $this->booksData->getBooks($filter, $sort),
+                'filter' => $filter,
+                'sort' => $sort,
+                'active' => $_GET['current'] ?? '',
+            ],
             $authenticated
         );
     }
@@ -44,23 +49,20 @@ class BookApp
 
     public function saveNew(array $data): void
     {
-        if (!$this->booksData->save($data)) { // will return false if book already exists
-            $this->twig->display(
-                'error.html.twig',
-                ['error' => 'Book already exists']
-            );
-            return;
-
-        }
+        $slug = $this->booksData->save($data);
 
         header('HTTP/2 301 Moved Permanently');
-        header('Location: index.php');
+        header("Location: index.php?current=$slug#$slug");
     }
 
     public function edit(array $data, string $slug): void
     {
         try {
             $this->booksData->edit($slug, $data);
+            if ($_POST['keep-editing']) {
+                $this->show($slug, true);
+                return;
+            }
             header('HTTP/2 301 Moved Permanently');
             header('Location: index.php');
         } catch (\Exception $e) {

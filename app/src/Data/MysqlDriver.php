@@ -56,7 +56,7 @@ FROM {$this->tableName}
     WHERE deleted_at IS NULL"
             . (empty($filter) ? '' : ' AND ' . $this->buildWhereClause($filter))
             . "\nORDER BY\n"
-            . (empty($sort) ? 'abandonned_at ASC, finished_at IS NULL DESC, finished_at DESC' : $this->buildSortClause($sort))
+            . (empty($sort) ? 'books.abandonned_at ASC, books.finished_at IS NULL DESC, books.finished_at DESC' : $this->buildSortClause($sort))
             . ';';
 
         $stmt = $this->connection->prepare($query);

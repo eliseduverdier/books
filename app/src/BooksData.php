@@ -38,7 +38,7 @@ class BooksData
         return $this->dataManager->getOne($slug);
     }
 
-    public function save(array $newBook): bool
+    public function save(array $newBook): string
     {
         return $this->dataManager->save($newBook);
     }

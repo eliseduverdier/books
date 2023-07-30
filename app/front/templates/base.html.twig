@@ -40,9 +40,9 @@
     {% block nav %}
         <div id="auth">
             {% if not authenticated %}
-                <a href="?action=login">Login</a>
+                <a class="" href="?action=login">Login</a>
             {% else %}
-                <a href="?action=logout">Logout</a>
+                <a class="" href="?action=logout">Logout</a>
             {% endif %}
         </div>
     {% endblock %}

@@ -68,3 +68,7 @@ li.books-list__item div.note-item {
 li.books-list__item div.finished-at-item {
     width: 15%;
 }
+
+li.active {
+    background: #eee;
+}

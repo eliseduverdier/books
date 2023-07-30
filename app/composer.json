@@ -49,6 +49,7 @@
     }
   },
   "require-dev": {
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "paquettg/php-html-parser": "^3.1"
   }
 }

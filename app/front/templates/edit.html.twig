@@ -63,6 +63,9 @@
             <button type="submit">OK</button>
         </div>
         <div>
+            <input type="submit" name="keep-editing" value="OK (keep editing)" />
+        </div>
+        <div>
             <label>
                 Abandonned
                 <input type="checkbox" name="abandonned_at" value="1" {{ book.abandonned_at ? 'checked' : '' }}/>

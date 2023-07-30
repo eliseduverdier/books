@@ -24,16 +24,19 @@ class Database implements DataInterface
         return $this->driver->selectOne(['books.slug' => $slug]);
     }
 
-    public function save(array $data): bool
+    public function save(array $data): string
     {
-        return $this->driver->saveBook([
-            'books.slug' => Util::slugifyBook($data),
+        $slug = Util::slugifyBook($data);
+        $this->driver->saveBook([
+            'books.slug' => $slug,
             'title' => $data['title'],
             'author' => $data['author'],
             'type_id' => $data['type'] === '' ? null : $data['type'],
             'note_id' => $data['note'] === '' ? null : $data['note'],
             'finished_at' => empty($data['finished_at']) ? null : $data['finished_at'],
         ]);
+
+        return $slug;
     }
 
     public function edit(string $slug, array $data): bool

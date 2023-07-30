@@ -21,6 +21,16 @@ function dd(...$var): void
 
 function e(string $from, mixed ...$values): void
 {
+    // console env
+    if (str_contains($from, 'test')) {
+        echo "$from: \n";
+        foreach ($values as $value) {
+            var_dump($value ?? 'null');
+        }
+        return;
+    }
+
+    // web env
     echo "<pre style='margin-bottom: 0;'>$from</pre>";
     foreach ($values as $value) {
         echo '<pre style="background:black; color: white; padding: 2px;margin-top: 0;">';

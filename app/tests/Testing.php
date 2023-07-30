@@ -11,14 +11,14 @@ class Testing
         BookAppTest::class,
     ];
 
-    public function run(): void
+    public function run(array $args): void
     {
         Assert::start();
-        $this->runAllTests();
+        $this->runAllTests(count($args) > 1 ? $args[1] : null);
         Assert::end();
     }
 
-    protected function runAllTests(): void
+    protected function runAllTests(?string $methodMatch): void
     {
         foreach ($this->testClasses as $className) {
             $methods = get_class_methods($className);
@@ -28,7 +28,7 @@ class Testing
 
             foreach ($methods as $method) {
                 if (!str_starts_with($method, 'test')) continue;
-                echo "Running $className::$method\n";
+                if ($methodMatch && !str_contains($method, $methodMatch)) continue;
                 $class->$method();
             }
             $class->tearDown();
