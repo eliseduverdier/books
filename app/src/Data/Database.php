@@ -31,8 +31,8 @@ class Database implements DataInterface
             'books.slug' => $slug,
             'title' => $data['title'],
             'author' => $data['author'],
-            'type_id' => $data['type'] === '' ? null : $data['type'],
-            'note_id' => $data['note'] === '' ? null : $data['note'],
+            'type_id' => empty($data['type']) ? null : $data['type'],
+            'note_id' => empty($data['note']) ? null : $data['note'],
             'finished_at' => empty($data['finished_at']) ? null : $data['finished_at'],
         ]);
 
@@ -44,8 +44,8 @@ class Database implements DataInterface
         return $this->driver->edit($slug, [
             'title' => $data['title'],
             'author' => $data['author'],
-            'type_id' => $data['type'] === '' ? null : $data['type'],
-            'note_id' => $data['note'] === '' ? null : $data['note'],
+            'type_id' => empty($data['type']) ? null : $data['type'],
+            'note_id' => empty($data['note']) ? null : $data['note'],
             'summary' => $data['summary'],
             'finished_at' => empty($data['finished_at']) ? null : $data['finished_at'],
             'abandonned_at' => array_key_exists('abandonned_at', $data) ? date('Y-m-d') : null,

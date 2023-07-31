@@ -6,7 +6,7 @@ use App\Tests\Dom\Dom;
 use App\Tests\Util\Assert;
 use App\Tests\Util\FunctionalTestCase;
 
-class BookAppTest extends FunctionalTestCase
+class BookAppViewTest extends FunctionalTestCase
 {
     protected Dom $dom;
 
@@ -57,59 +57,6 @@ class BookAppTest extends FunctionalTestCase
         Assert::equals('🗝 Title 3', $this->dom->findOne('li#title3_author2 .title-item')->innerText);
     }
 
-    public function testCreation(): void
-    {
-        // Create book, existing author
-        $output = $this->crawl('/', 'POST', [
-            'title' => 'New Book',
-            'author' => 'author1',
-            'type' => 'novel',
-            'note' => '1',
-            'finished_at' => '2022-01-01',
-        ], true);
-        $this->dom->loadStr($output);
-
-        // items
-        Assert::exists($this->dom->findOne('li#author1_new_book'));
-        // attributes
-        Assert::equals('New Book', $this->dom->findOne('li#author1_new_book .title-item')->innerText);
-        Assert::equals('Author #1', $this->dom->findOne('li#author1_new_book .author-item')->innerText);
-        Assert::equals('novel', $this->dom->findOne('li#author1_new_book .type-item')->innerText);
-        Assert::equals('**', $this->dom->findOne('li#author1_new_book .note-item')->innerText);
-        Assert::equals('2022⋅01⋅01', $this->dom->findOne('li#author1_new_book .finished-at-item')->innerText);
-    }
-
-    // Create book, unlogged user
-    public function testCreateUnlogged(): void
-    {
-        $output = $this->crawl('/', 'POST', ['title' => 'Nope', 'author' => 'Nope',]);
-        $this->dom->loadStr($output);
-        Assert::isNull($this->dom->findOne('li#nope_nope'));
-    }
-
-    // No title: no book
-    public function testCreateNoTitle(): void
-    {
-        $output = $this->crawl('/', 'POST', ['author' => 'Nope',]);
-        $this->dom->loadStr($output);
-        Assert::isNull($this->dom->findOne('li#nope_'));
-    }
-
-    // Create unoted/untyped
-    public function testCreationNewAuthor(): void
-    {
-        // Form to create book, existing author
-        $output = $this->crawl('/', 'POST', [
-            'title' => 'New Book with New Author',
-            'author' => 'Author 3',
-        ], true);
-        $this->dom->loadStr($output);
-
-        Assert::exists($this->dom->findOne('li#author_3_new_book_with_new_author'));
-        Assert::equals('Author 3', $this->dom->findOne('li#author_3_new_book_with_new_author .author-item')->innerText);
-        Assert::equals('currently reading', $this->dom->findOne('li#author_3_new_book_with_new_author .finished-at-item')->innerText);
-    }
-
     public function testFilter(): void
     {
         $output = $this->crawl('/?filter[note]=2');
@@ -127,12 +74,9 @@ class BookAppTest extends FunctionalTestCase
 
         Assert::equals('title3_author2', $this->dom->find('li.books-list__item')[2]->getAttribute('id'));
         Assert::equals('title4_author2', $this->dom->find('li.books-list__item')[3]->getAttribute('id'));
-        Assert::equals('author1_new_book', $this->dom->find('li.books-list__item')[4]->getAttribute('id'));
-        Assert::equals('title2_author1', $this->dom->find('li.books-list__item')[5]->getAttribute('id'));
-        Assert::equals('title1_author1', $this->dom->find('li.books-list__item')[6]->getAttribute('id'));
-        Assert::equals('author_3_new_book_with_new_author', $this->dom->find('li.books-list__item')[7]->getAttribute('id'));
+        Assert::equals('title2_author1', $this->dom->find('li.books-list__item')[4]->getAttribute('id'));
+        Assert::equals('title1_author1', $this->dom->find('li.books-list__item')[5]->getAttribute('id'));
     }
-
 
     public function testSee(): void
     {
@@ -140,19 +84,19 @@ class BookAppTest extends FunctionalTestCase
         Assert::equals('📖 Title 1', $this->dom->findOne('h1')->innerHtml);
     }
 
-
-    // TODO
     public function testEditForm(): void
     {
-//        $output = $this->crawl('/?action=edit&slug=title1_author1', 'GET', [], true);
-    }
+        $output = $this->crawl('/?action=edit&slug=title1_author1', 'GET', [], true);
+        $this->dom->loadStr($output);
 
-    public function testEdit(): void
-    {
-//        $output = $this->crawl('/?action=edit', 'POST', [], true);
-    }
-
-    public function testDelete(): void
-    {
+        Assert::equals('Title 1', $this->dom->findOne('input[name=title]')->getAttribute('value'));
+        Assert::equals('author1', $this->dom->findOne('input[name=author]')->getAttribute('value'));
+        Assert::equals('2022-01-01', $this->dom->findOne('input[name=finished_at]')->getAttribute('value'));
+        Assert::equals('essay', $this->dom->findOne('select[name=type] option[selected=true]')->getAttribute('value'));
+        Assert::equals('0', $this->dom->findOne('select[name=note] option[selected=true]')->getAttribute('value'));
+        Assert::equals('* (mh)', $this->dom->findOne('select[name=note] option[selected=true]')->innerText);
+        Assert::equals('summary', $this->dom->findOne('textarea[name=summary]')->innerText);
+        Assert::true($this->dom->findOne('input[name=private_book]')->hasAttribute('checked'));
+        Assert::false($this->dom->findOne('input[name=private_summary]')->hasAttribute('checked'));
     }
 }

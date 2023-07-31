@@ -26,7 +26,6 @@ class FunctionalTestCase
 
     public function setUpDatabase(): void
     {
-        echo " >>>> Setting up database...\n";
         // TODO: 'CREATE DATABASE books_test;'
 
         $structure = explode('--', file_get_contents(__DIR__ . '/../../data/data-structure.sql'));

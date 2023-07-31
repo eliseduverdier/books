@@ -7,6 +7,7 @@ class Assert
     private static int $PLAYED_COUNT = 0;
     private static int $FAILED_COUNT = 0;
     private static int $PASSED_COUNT = 0;
+    private static array $errors = [];
 
     public static function assert(bool $condition, string $message = ''): void
     {
@@ -68,7 +69,7 @@ class Assert
         self::assert($value1 === $value2,
                 $message
                 ??
-                is_scalar($value1) && is_scalar($value2) ? "Expected $value1 to equals $value2"
+                is_scalar($value1) && is_scalar($value2) ? "Expected \033[1m$value1\033[0m to equals \033[1m$value2\033[0m"
                 : 'Expected values to be equal');
     }
 
@@ -128,22 +129,30 @@ class Assert
         echo PHP_EOL . self::$PLAYED_COUNT . ' tests played';
         echo PHP_EOL . self::$PASSED_COUNT . ' tests passed';
         echo PHP_EOL . self::$FAILED_COUNT . ' tests failed';
+        if (self::$FAILED_COUNT > 0) {
+            echo "\n\nErrors:\n";
+            foreach (self::$errors as $error) {
+                echo $error;
+            }
+        }
         echo PHP_EOL;
         if (self::$FAILED_COUNT === 0)
-        echo '🎉'.PHP_EOL;
+            echo '🎉' . PHP_EOL;
     }
 
     protected static function success(): void
     {
         self::$PLAYED_COUNT++;
         self::$PASSED_COUNT++;
-        echo '✓';
+
+        echo "\033[32m✓\033[0m";
     }
 
     protected static function error(string $message, string $from = ''): void
     {
         self::$PLAYED_COUNT++;
         self::$FAILED_COUNT++;
-        echo PHP_EOL . '✗ ' . $message . $from . PHP_EOL;
+        self::$errors[] = "    $message $from\n";
+        echo "\033[31m✗\033[0m";
     }
 }

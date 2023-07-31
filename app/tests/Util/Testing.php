@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Util;
 
-use App\Tests\Util\Assert;
-use App\Tests\Util\FunctionalTestCase;
+use App\Tests\BookAppEditionTest;
+use App\Tests\BookAppViewTest;
 
 class Testing
 {
     protected array $testClasses = [
-        BookAppTest::class,
+        BookAppViewTest::class,
+        BookAppEditionTest::class,
     ];
 
     public function run(array $args): void
@@ -21,6 +22,7 @@ class Testing
     protected function runAllTests(?string $methodMatch): void
     {
         foreach ($this->testClasses as $className) {
+            echo "\n\033[1m\033[32m >>> Testing $className\033[0m\n";
             $methods = get_class_methods($className);
 
             $class = (new $className());
