@@ -17,6 +17,10 @@ button.delete a {
     color: white;
 }
 
+.unsaved {
+    border: 1px solid firebrick;
+}
+
 /*
  * NOT LOGGED IN
  */

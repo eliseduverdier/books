@@ -80,7 +80,8 @@ FROM books
     LEFT JOIN books_notes n ON n.id = books.note_id
     LEFT JOIN books_author a ON a.slug = books.author
 WHERE $field = ?;
-");
+"
+        );
         $stmt->bind_param('s', array_values($by)[0]);
         $stmt->execute();
 

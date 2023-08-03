@@ -54,7 +54,11 @@
 
 {% block body %}{% endblock %}
 
-<script type="text/javascript"> {% include 'js/theme-switch.js' %}</script>
+<script type="text/javascript">
+    {% block javascript %}
+    {% include 'js/theme-switch.js' %}
+    {% endblock %}
+</script>
 
 </body>
 </html>

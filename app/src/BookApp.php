@@ -18,7 +18,6 @@ class BookApp
             [
                 'debug' => true,
             ]
-
         ));
         $this->twig->addExtension(new \Twig\Extension\DebugExtension());
         $this->booksData = new \App\BooksData();
@@ -110,12 +109,14 @@ class BookApp
     {
         $this->twig->display(
             $template,
-            array_merge($data,
+            array_merge(
+                $data,
                 [
                     'types' => $this->booksData->getTypes(),
                     'notes' => $this->booksData->getNotes(),
                     'authenticated' => $authenticated,
-                ])
+                ]
+            )
         );
     }
 }
