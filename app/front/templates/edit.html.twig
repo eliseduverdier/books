@@ -11,7 +11,7 @@
 
     {# Keep there for debug {{ dump(book|json_encode(constant('JSON_PRETTY_PRINT'))) }} #}
 
-    <form method="POST" name="?action=edit&slug={{ book.slug }}" id="edit">
+    <form method="POST" name="?action=edit&slug={{ book.slug }}" id="edit" data-slug="{{ book.slug }}">
         <div>
             <label>
                 <input value="{{ book.title }}" type="text" name="title" placeholder="title" autocomplete="off"/>
@@ -67,7 +67,7 @@
         </div>
         <div>
             <label>
-                Abandonned
+                Abandoned
                 <input type="checkbox" name="abandonned_at" value="1" {{ book.abandonned_at ? 'checked' : '' }}/>
             </label>
         </div>
@@ -87,4 +87,10 @@
             <button class="delete"><a href="?action=delete&slug={{ book.slug }}">Delete</a></button>
         </div>
     </form>
+
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% include 'js/save-summary.js' %}
 {% endblock %}
