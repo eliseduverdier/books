@@ -50,6 +50,7 @@
   },
   "require-dev": {
     "ext-curl": "*",
+    "friendsofphp/php-cs-fixer": "^3.22",
     "paquettg/php-html-parser": "^3.1"
   }
 }

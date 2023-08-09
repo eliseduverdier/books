@@ -1,5 +1,5 @@
 app/vendor/
-app/data/books_saved*
 app/.env.php
 deploy.sh
 .env.php
+.php-cs-fixer.cache
