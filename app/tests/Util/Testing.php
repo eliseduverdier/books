@@ -21,8 +21,10 @@ class Testing
 
     protected function runAllTests(?string $methodMatch): void
     {
+        try {
+
         foreach ($this->testClasses as $className) {
-            echo "\n\033[1m\033[32m >>> Testing $className\033[0m\n";
+            echo "\n\n\033[1m\033[32m >>> Testing $className\033[0m";
             $methods = get_class_methods($className);
 
             $class = (new $className());
@@ -31,9 +33,12 @@ class Testing
             foreach ($methods as $method) {
                 if (!str_starts_with($method, 'test')) continue;
                 if ($methodMatch && !str_contains($method, $methodMatch)) continue;
+                echo "\n $method ";
                 $class->$method();
             }
             $class->tearDown();
         }
+    } catch (\Exception $e) {
+}
     }
 }

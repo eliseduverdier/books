@@ -19,7 +19,6 @@ class BookAppViewTest extends FunctionalTestCase
     public function testHomeList(): void
     {
         $this->dom->loadStr($this->crawl('/'));
-
         // Page title
         Assert::equals('List of read books 📚', $this->dom->findOne('h1')->innerText);
 

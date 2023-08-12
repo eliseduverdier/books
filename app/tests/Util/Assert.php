@@ -11,13 +11,19 @@ class Assert
 
     public static function assert(bool $condition, string $message = ''): void
     {
-        if ($condition) {
-            self::success();
-        } else {
+        try {
+            if ($condition) {
+                self::success();
+                return;
+            } else {
+                throw new \Exception($message);
+            }
+        } catch (\Exception $e) {
             $backtrace = debug_backtrace();
             $file = explode('/', $backtrace[1]['file']);
             $from = ' (' . array_pop($file) . ':' . $backtrace[1]['line'] . ')';
-            self::error($message, $from);
+            self::error($e->getMessage(), $from);
+            echo $e->getMessage() . " \n";
         }
     }
 

@@ -26,16 +26,17 @@ class MysqlDriver
 
     public function __construct(protected string $tableName = '')
     {
+        // show headers
+
         // TODO find a cleaner way to handle this
         if (empty($_SERVER['SERVER_NAME']) || $_SERVER['SERVER_NAME'] === 'localhost') {
             require __DIR__ . '/../../.env.dist.php';
         } else {
             require __DIR__ . '/../../.env.php';
         }
-        if (getenv('ENV') === 'test') {
-            $DB_NAME = 'books_test';
+        if (getallheaders()['ENV'] === 'test') {
+            $DB_NAME = 'books_tests';
         }
-
         $this->connection = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
 
         if (!$this->connection) {
