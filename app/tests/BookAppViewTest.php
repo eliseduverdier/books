@@ -39,7 +39,7 @@ class BookAppViewTest extends FunctionalTestCase
         Assert::equals('Author #2', $this->dom->findOne('#title3_author2 .author-item')->innerText);
         Assert::equals('?filter[author]=author2', $this->dom->findOne('#title3_author2 .author-item a')->getAttribute('href'));
         Assert::equals('currently reading', $this->dom->findOne('#title3_author2 .finished-at-item')->innerText);
-        Assert::equals('abandonned', $this->dom->findOne('#title4_author2 .finished-at-item')->innerText);
+        Assert::equals('abandoned', $this->dom->findOne('#title4_author2 .finished-at-item')->innerText);
     }
 
     public function testHomeListLoggedIn(): void

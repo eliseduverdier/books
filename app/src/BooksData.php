@@ -8,29 +8,21 @@ use App\Data\Database;
 class BooksData
 {
     protected Database $dataManager;
-    protected array $notes;
-    protected array $types;
+    public array $notes;
+    public array $types;
+    public array $authors;
 
     public function __construct()
     {
         $this->dataManager = new Database();
         $this->notes = $this->dataManager->getNotes();
         $this->types = $this->dataManager->getTypes();
+        $this->authors = $this->dataManager->getAuthors();
     }
 
     public function getBooks(array $filter, array $sort): array
     {
         return $this->dataManager->getAll($filter, $sort);
-    }
-
-    public function getNotes(): array
-    {
-        return $this->dataManager->getNotes();
-    }
-
-    public function getTypes(): array
-    {
-        return $this->dataManager->getTypes();
     }
 
     public function getBook(string $slug): array

@@ -112,8 +112,9 @@ class BookApp
             array_merge(
                 $data,
                 [
-                    'types' => $this->booksData->getTypes(),
-                    'notes' => $this->booksData->getNotes(),
+                    'types' => $this->booksData->types,
+                    'notes' => $this->booksData->notes,
+                    'authors' => $this->booksData->authors,
                     'authenticated' => $authenticated,
                 ]
             )

@@ -41,11 +41,11 @@ li.books-list__item.reading {
     opacity: .5;
 }
 
-li.books-list__item.abandonned {
+li.books-list__item.abandoned {
     opacity: .7;
 }
 
-li.books-list__item.abandonned div {
+li.books-list__item.abandoned div {
     text-decoration: line-through;
 }
 

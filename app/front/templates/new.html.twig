@@ -1,42 +1,49 @@
-<form method="POST">
-        <li class="books-list__item">
-            <div class="title-item">
+<li class="books-list__item">
+    <form method="POST">
+        <div class="title-item">
 
-                <label>
-                    <input type="text" name="title" placeholder="title" autocapitalize="words" required/>
-                </label>
-            </div>
-            <div class="author-item">
-                <label>
-                    <input type="text" name="author" placeholder="author" autocapitalize="words" required/>
-                </label>
-            </div>
-            <div class="type-item">
-                <label>
-                    <select name="type">
-                        <option value="">—Type—</option>
-                        {% for type in types %}
-                            <option value="{{ type.name }}"> {{ type.name }} </option>
-                        {% endfor %}
-                    </select>
-                </label>
-            </div>
-            <div class="note-item">
-                <label>
-                    <select name="note">
-                        <option value="">—Note—</option>
-                        {% for note in notes %}
-                            <option value="{{ note.id }}"> {{ note.note }} ({{ note.legend }})</option>
-                        {% endfor %}
-                    </select>
-                </label></div>
-            <div class="finished-at-item">
-                <label>
-                    <input type="date" name="finished_at" placeholder="date"/>
-                </label>
-                <label>
-                    <button type="submit">OK</button>
-                </label>
-            </div>
-        </li>
-</form>
+            <label>
+                <input type="text" name="title" placeholder="title" autocapitalize="words" required/>
+            </label>
+        </div>
+        <div class="author-item">
+            <label>
+                <input list="all_authors_list" type="text" name="author" placeholder="author" autocapitalize="words" required/>
+            </label>
+        </div>
+        <div class="type-item">
+            <label>
+                <select name="type">
+                    <option value="">—Type—</option>
+                    {% for type in types %}
+                        <option value="{{ type.name }}"> {{ type.name }} </option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <div class="note-item">
+            <label>
+                <select name="note">
+                    <option value="">—Note—</option>
+                    {% for note in notes %}
+                        <option value="{{ note.id }}"> {{ note.note }} ({{ note.legend }})</option>
+                    {% endfor %}
+                </select>
+            </label></div>
+        <div class="finished-at-item">
+            <label>
+                <input type="date" name="finished_at" placeholder="date"/>
+            </label>
+            <label>
+                <button type="submit">OK</button>
+            </label>
+        </div>
+    </form>
+</li>
+
+
+<datalist id="all_authors_list">
+    {% for author in authors %}
+        <option value="{{ author.slug }}">{{ author.name }}</option>
+    {% endfor %}
+</datalist>

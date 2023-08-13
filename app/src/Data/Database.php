@@ -48,7 +48,7 @@ class Database implements DataInterface
             'note_id' => empty($data['note']) ? null : $data['note'],
             'summary' => $data['summary'],
             'finished_at' => empty($data['finished_at']) ? null : $data['finished_at'],
-            'abandonned_at' => array_key_exists('abandonned_at', $data) ? date('Y-m-d') : null,
+            'abandoned_at' => array_key_exists('abandoned_at', $data) ? date('Y-m-d') : null,
             'private_book' => array_key_exists('private_book', $data),
             'private_summary' => array_key_exists('private_summary', $data),
         ]);
@@ -57,6 +57,11 @@ class Database implements DataInterface
     public function delete(string $slug): bool
     {
         return $this->driver->delete($slug);
+    }
+
+    public function getAuthors(): array
+    {
+        return $this->driver->selectFromTable('books_author');
     }
 
     public function getNotes(): array
