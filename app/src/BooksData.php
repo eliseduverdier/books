@@ -54,4 +54,9 @@ class BooksData
     {
         $this->dataManager->delete($slug);
     }
+
+    public function finish(mixed $slug)
+    {
+        $this->dataManager->updateFinishedAt($slug);
+    }
 }

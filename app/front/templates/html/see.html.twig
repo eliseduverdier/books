@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'html/base.html.twig' %}
 
 {% block nav %}
     {{ parent() }}
-    <div><a href="..">&lt;&lt; back </a></div>
+    <div><a href="../..">&lt;&lt; back </a></div>
 {% endblock %}
 
 {% block title %}📖 {{ book.title }}{% endblock %}
@@ -20,7 +20,9 @@
     <p>
         Finished at: <strong>{{ book.finished_at ? book.finished_at|date('Y⋅m⋅d') : 'currently reading' }}</strong>
     </p>
-    {% if not book.private_summary %}
+    {% if book.private_summary %}
+        🗝️
+    {% else %}
         <hr>
         <p id="summary">
             {{ book.summary|replace({'\n': '<br>'})|raw }}

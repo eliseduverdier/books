@@ -5,11 +5,13 @@
 form#edit {
     max-width: 600px;
 }
+
 input, button, select, textarea {
     border: 1px solid var(--fg-color);
     padding: 5px;
     font: normal 14px monospace;
 }
+
 input[type=text], input[type=password], select, textarea {
     width: 100%;
     margin: 5px 0;

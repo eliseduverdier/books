@@ -33,6 +33,9 @@ if ($authenticated) {
                 ? (new BookApp())->edit($_POST, $slug)
                 : (new BookApp())->show($slug, true);
             break;
+        case 'finish':
+            (new BookApp())->finish($slug);
+            break;
         case 'delete':
             (new BookApp())->delete($slug);
             break;

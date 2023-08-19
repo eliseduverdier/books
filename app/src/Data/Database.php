@@ -69,4 +69,8 @@ class Database implements DataInterface
         return $this->driver->selectFromTable('books_types');
     }
 
+    public function updateFinishedAt(mixed $slug)
+    {
+        $this->driver->edit($slug, ['finished_at' => date('Y-m-d')]);
+    }
 }

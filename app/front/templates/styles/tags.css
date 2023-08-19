@@ -2,11 +2,11 @@
     --tags__text: white;
     --tags__essay: #6a5392;
     --tags__novel: #088395;
-    --tags__poetry: #05BFDB;
-    --tags__biography: #8EAC50;
+    --tags__poetry: #05bfdb;
+    --tags__biography: #8eac50;
     --tags__art: #d2ad12;
-    --tags__BD: #D6770A;
-    --tags__theater: #93078E;
+    --tags__BD: #d6770a;
+    --tags__theater: #93078e;
 }
 
 [data-theme="dark"] {
@@ -16,8 +16,8 @@
     --tags__poetry: #0bdbe0;
     --tags__biography: #a3b76d;
     --tags__art: #e0c12b;
-    --tags__BD: #FA8B0C;
-    --tags__theater: #D355CB;
+    --tags__BD: #fa8b0c;
+    --tags__theater: #d355cb;
 }
 
 .essay, .novel, .poetry, .biography, .art, .BD, .theater {

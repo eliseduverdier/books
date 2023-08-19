@@ -34,7 +34,7 @@ class MysqlDriver
         } else {
             require __DIR__ . '/../../.env.php';
         }
-        if (getallheaders()['ENV'] === 'test') {
+        if (array_key_exists('ENV', getallheaders()) && getallheaders()['ENV'] === 'test') {
             $DB_NAME = 'books_tests';
         }
         $this->connection = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);

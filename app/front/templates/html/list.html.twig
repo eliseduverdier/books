@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'html/base.html.twig' %}
 
 {%- block title -%}List of read books 📚{%- endblock -%}
 
@@ -34,7 +34,7 @@
         </li>
 
         {% if authenticated %}
-            {% include 'new.html.twig' %}
+            {% include 'html/new.html.twig' %}
         {% endif %}
 
         {% for book in books %}
@@ -77,10 +77,22 @@
                 <div class="finished-at-item">
                     {{ book.finished_at
                     ? book.finished_at|date('Y⋅m⋅d')
-                    : (book.abandonned_at ? 'abandonned' : 'currently reading') }}</div>
+                    : (book.abandonned_at ? 'abandonned' : 'currently reading') }}
+            {% if authenticated and not book.finished_at %}
+                <a href="?slug={{ book.slug }}&action=finish" class="list__finish">✅</a>
+            {% endif %}
+                </div>
+                <div>
+                </div>
+
             </li>
 
         {% endif %}
         {% endfor %}
     </ul>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% include 'js/finished.js' %}
 {% endblock %}

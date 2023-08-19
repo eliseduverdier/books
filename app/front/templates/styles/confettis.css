@@ -1,0 +1,47 @@
+div.confetti {
+    position: absolute;
+    top: -20px;
+    left: var(--pos);
+    margin: 0 50px;
+    width: 20px;
+    height: 20px;
+    animation: var(--speed) 1 alternate confetti;
+}
+
+.yellow {
+    background-color: #c3f00b;
+    border-radius: 10px;
+    animation: 5s 1 alternate rotatemagenta, var(--speed) 1 alternate confetti;
+}
+
+.green {
+    background-color: #2ef033;
+    border-radius: 5px 15px;
+    animation: 5s 1 alternate rotatecyan, var(--speed) 1 alternate confetti;
+}
+
+.blue {
+    background-color: #1ef0cf;
+    border-radius: 20px 2px;
+    animation: 5s 1 alternate rotateyellow, var(--speed) 1 alternate confetti;
+}
+
+@keyframes confetti {
+    0% {top: 0; opacity: 1;}
+    100% {top: 150vh; opacity: 0;}
+}
+
+@keyframes rotatemagenta {
+    0% {transform: rotate(-645deg) skew(-30deg) rotateY(0deg);}
+    100% {transform: rotate(645deg) skew(30deg) rotateY(4turn);}
+}
+
+@keyframes rotatecyan {
+    0% {transform: rotate(-180deg) skew(-10deg) rotateY(-180deg);}
+    100% {transform: rotate(645deg) skew(45deg) rotateY(4turn);}
+}
+
+@keyframes rotateyellow {
+    0% {transform: rotate(645deg) skew(10deg) rotateY(-360deg);}
+    100% {transform: rotate(645deg) skew(30deg) rotateY(3turn);}
+}

@@ -2,14 +2,17 @@ form#login {
     display: flex;
     flex-direction: column;
 }
+
 form#login > div > label {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
 form#login > div > label > input {
     width: 100%;
 }
+
 form#login > div > label > .see-password {
     cursor: pointer;
     margin-left: -45px;

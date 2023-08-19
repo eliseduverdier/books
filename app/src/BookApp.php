@@ -72,6 +72,13 @@ class BookApp
         }
     }
 
+    public function finish(mixed $slug)
+    {
+        $this->booksData->finish($slug);
+        header('HTTP/2 301 Moved Permanently');
+        header('Location: index.php?finished=true');
+    }
+
     public function delete(string $slug): void
     {
         try {
@@ -108,7 +115,7 @@ class BookApp
     protected function display(string $template, array $data, bool $authenticated): void
     {
         $this->twig->display(
-            $template,
+            "html/$template",
             array_merge(
                 $data,
                 [
